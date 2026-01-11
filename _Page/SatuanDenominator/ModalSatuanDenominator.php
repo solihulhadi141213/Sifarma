@@ -40,9 +40,9 @@ FILTER DATA
                         <div class="col-8">
                             <select name="OrderBy" id="OrderBy" class="form-control">
                                 <option value="">Pilih</option>
-                                <option value="unit">Unit</option>
-                                <option value="code_numerator">Code</option>
-                                <option value="system_numerator">System</option>
+                                <option value="code_denominator">Code</option>
+                                <option value="display_denominator">Display</option>
+                                <option value="system_denominator">System</option>
                             </select>
                         </div>
                     </div>
@@ -68,9 +68,9 @@ FILTER DATA
                         <div class="col-8">
                             <select name="keyword_by" id="KeywordBy" class="form-control">
                                 <option value="">Pilih</option>
-                                <option value="unit">Unit</option>
-                                <option value="code_numerator">Code</option>
-                                <option value="system_numerator">System</option>
+                                <option value="code_denominator">Code</option>
+                                <option value="display_denominator">Display</option>
+                                <option value="system_denominator">System</option>
                             </select>
                         </div>
                     </div>
@@ -106,7 +106,7 @@ EXPORT SEDIAAN
 <div class="modal fade" id="ModalExport" tabindex="-1">
     <div class="modal-dialog modal-md">
         <div class="modal-content">
-            <form action="_Page/SatuanNumerator/ProsesExport.php" method="GET" target="_blank" autocomplete="off">
+            <form action="_Page/SatuanDenominator/ProsesExport.php" method="GET" target="_blank" autocomplete="off">
                 <div class="modal-header">
                     <h5 class="modal-title text-dark"><i class="bi bi-download"></i> Export Satuan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -133,7 +133,7 @@ EXPORT SEDIAAN
 
 <!-- 
 ==========================================================================================
-IMPORT Satuan
+IMPORT SEDIAAN
 ==========================================================================================
 -->
 <div class="modal fade" id="ModalImport" tabindex="-1">
@@ -171,7 +171,7 @@ IMPORT Satuan
 
 <!-- 
 ==========================================================================================
-TAMBAH SATUAN NUMERATOR
+TAMBAH SATUAN Denominator
 ==========================================================================================
 -->
 <div class="modal fade" id="ModalTambah" tabindex="-1">
@@ -179,26 +179,26 @@ TAMBAH SATUAN NUMERATOR
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesTambah" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Satuan Numerator</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Satuan Denominator</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <label for="unit"><i>Unit</i></label>
-                            <input type="text" name="unit" id="unit" class="form-control" placeholder="Ex: gram, liter, dll">
+                            <label for="code_denominator"><i>Code</i></label>
+                            <input type="text" name="code_denominator" id="code_denominator" class="form-control" placeholder="Ex: APPFUL">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <label for="code_numerator"><i>Code</i></label>
-                            <input type="text" name="code_numerator" id="code_numerator" class="form-control" placeholder="Ex: g, ml">
+                            <label for="display_denominator"><i>Display</i></label>
+                            <input type="text" name="display_denominator" id="display_denominator" class="form-control" placeholder="Ex: Applicatorful">
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-12">
-                            <label for="system_numerator"><i>System</i></label>
-                            <input type="url" name="system_numerator" id="system_numerator" class="form-control" list="list_system" placeholder="https://">
+                            <label for="system_denominator"><i>System</i></label>
+                            <input type="url" name="system_denominator" id="system_denominator" class="form-control" list="list_system" placeholder="https://">
                             <datalist id="list_system"></datalist>
                         </div>
                     </div>
@@ -231,7 +231,7 @@ EDIT SATUAN
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesEdit" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Satuan Numerator</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Satuan Denominator</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">

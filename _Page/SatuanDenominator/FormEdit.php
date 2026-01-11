@@ -17,8 +17,8 @@
         exit;
     }
 
-    // Validasi id_referensi_numerator
-    if (empty($_POST['id_referensi_numerator'])) {
+    // Validasi 'id_referensi_denominator'
+    if (empty($_POST['id_referensi_denominator'])) {
         echo '
             <div class="alert alert-danger">
                 <small>ID Satuan Tidak Boleh Kosong!</small>
@@ -27,12 +27,12 @@
         exit;
     }
 
-    // Buat Variabel 'id_referensi_numerator' dan sanitazi
-    $id_referensi_numerator = validateAndSanitizeInput($_POST['id_referensi_numerator']);
+    // Buat Variabel 'id_referensi_denominator' dan sanitazi
+    $id_referensi_denominator = validateAndSanitizeInput($_POST['id_referensi_denominator']);
 
     // Query Database 'referensi_sediaan'
-    $Qry = $Conn->prepare("SELECT * FROM referensi_numerator WHERE id_referensi_numerator = ?");
-    $Qry->bind_param("i", $id_referensi_numerator);
+    $Qry = $Conn->prepare("SELECT * FROM referensi_denominator WHERE id_referensi_denominator = ?");
+    $Qry->bind_param("i", $id_referensi_denominator);
 
     if (!$Qry->execute()) {
         echo '
@@ -57,29 +57,29 @@
         exit;
     }
 
-    $id_referensi_numerator = $Data['id_referensi_numerator'];
-    $unit                   = $Data['unit'];
-    $code_numerator         = $Data['code_numerator'];
-    $system_numerator       = $Data['system_numerator'];
+    $id_referensi_denominator = $Data['id_referensi_denominator'];
+    $code_denominator         = $Data['code_denominator'];
+    $display_denominator      = $Data['display_denominator'];
+    $system_denominator       = $Data['system_denominator'];
 
     echo '
-        <input type="hidden" name="id_referensi_numerator" value="'.$id_referensi_numerator.'">
+        <input type="hidden" name="id_referensi_denominator" value="'.$id_referensi_denominator.'">
         <div class="row mb-3">
             <div class="col-md-12">
-                <label for="unit_edit"><i>Unit</i></label>
-                <input type="text" name="unit" id="unit_edit" class="form-control" placeholder="Ex: gram, liter, dll" value="'.$unit.'">
+                <label for="code_denominator_edit"><i>Code</i></label>
+                <input type="text" name="code_denominator" id="code_denominator_edit" class="form-control" placeholder="Ex: APPFUL" value="'.$code_denominator.'">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
-                <label for="code_numerator_edit"><i>Code</i></label>
-                <input type="text" name="code_numerator" id="code_numerator_edit" class="form-control" placeholder="Ex: g, ml" value="'.$code_numerator.'">
+                <label for="display_denominator_edit"><i>Display</i></label>
+                <input type="text" name="display_denominator" id="display_denominator_edit" class="form-control" placeholder="Ex: Applicatorful" value="'.$display_denominator.'">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col-md-12">
-                <label for="system_numerator_edit"><i>System</i></label>
-                <input type="url" name="system_numerator" id="system_numerator_edit" class="form-control" list="list_system_edit" placeholder="https://" value="'.$system_numerator.'">
+                <label for="system_denominator_edit"><i>System</i></label>
+                <input type="url" name="system_denominator" id="system_denominator_edit" class="form-control" list="list_system_edit" placeholder="https://" value="'.$system_denominator.'">
                 <datalist id="list_system_edit"></datalist>
             </div>
         </div>

@@ -83,7 +83,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($PageMenu=="satuan_denominator"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=satuan_denominator">
+            <a class="nav-link <?php if($PageMenu=="SatuanDenominator"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=SatuanDenominator">
                 <i class="bi bi-box-arrow-up-right"></i> <span>Satuan (Denominator)</span>
             </a>
         </li>

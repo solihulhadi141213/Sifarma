@@ -5,19 +5,20 @@
         
         // Daftar halaman dan modal yang terkait
         $modals = [
-            "MyProfile"        => "_Page/MyProfile/ModalMyProfile.php",
-            "AksesFitur"       => "_Page/AksesFitur/ModalAksesFitur.php",
-            "AksesEntitas"     => "_Page/AksesEntitas/ModalAksesEntitas.php",
-            "Akses"            => "_Page/Akses/ModalAkses.php",
-            "SettingEmail"     => "_Page/SettingEmail/ModalSettingEmail.php",
-            "SettingSimrs"     => "_Page/SettingSimrs/ModalSettingSimrs.php",
-            "SettingSatuSehat" => "_Page/SettingSatuSehat/ModalSettingSatuSehat.php",
-            "ApiKey"           => "_Page/ApiKey/ModalApiKey.php",
-            "Sediaan"          => "_Page/Sediaan/ModalSediaan.php",
-            "SatuanNumerator"  => "_Page/SatuanNumerator/ModalSatuanNumerator.php",
-            "Medication"       => "_Page/Medication/ModalMedication.php",
-            "Aktivitas"        => "_Page/Aktivitas/ModalAktivitas.php",
-            "Help"             => "_Page/Help/ModalHelp.php"
+            "MyProfile"         => "_Page/MyProfile/ModalMyProfile.php",
+            "AksesFitur"        => "_Page/AksesFitur/ModalAksesFitur.php",
+            "AksesEntitas"      => "_Page/AksesEntitas/ModalAksesEntitas.php",
+            "Akses"             => "_Page/Akses/ModalAkses.php",
+            "SettingEmail"      => "_Page/SettingEmail/ModalSettingEmail.php",
+            "SettingSimrs"      => "_Page/SettingSimrs/ModalSettingSimrs.php",
+            "SettingSatuSehat"  => "_Page/SettingSatuSehat/ModalSettingSatuSehat.php",
+            "ApiKey"            => "_Page/ApiKey/ModalApiKey.php",
+            "Sediaan"           => "_Page/Sediaan/ModalSediaan.php",
+            "SatuanNumerator"   => "_Page/SatuanNumerator/ModalSatuanNumerator.php",
+            "SatuanDenominator" => "_Page/SatuanDenominator/ModalSatuanDenominator.php",
+            "Medication"        => "_Page/Medication/ModalMedication.php",
+            "Aktivitas"         => "_Page/Aktivitas/ModalAktivitas.php",
+            "Help"              => "_Page/Help/ModalHelp.php"
         ];
 
         // Cek apakah halaman memiliki modal terkait dan sertakan file modalnya
