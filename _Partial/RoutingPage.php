@@ -15,6 +15,7 @@
             "SettingSatuSehat" => "_Page/SettingSatuSehat/SettingSatuSehat.php",
             "ApiKey"           => "_Page/ApiKey/ApiKey.php",
             "Sediaan"          => "_Page/Sediaan/Sediaan.php",
+            "SatuanNumerator"  => "_Page/SatuanNumerator/SatuanNumerator.php",
             "Medication"       => "_Page/Medication/Medication.php",
             "Aktivitas"        => "_Page/Aktivitas/Aktivitas.php",
             "Help"             => "_Page/Help/Help.php",

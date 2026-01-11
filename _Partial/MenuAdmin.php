@@ -77,6 +77,16 @@
                 <i class="bi bi-box"></i> <span>Sediaan</span>
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($PageMenu=="SatuanNumerator"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=SatuanNumerator">
+                <i class="bi bi-box-arrow-down-right"></i> <span>Satuan (Numerator)</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($PageMenu=="satuan_denominator"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=satuan_denominator">
+                <i class="bi bi-box-arrow-up-right"></i> <span>Satuan (Denominator)</span>
+            </a>
+        </li>
         <li class="nav-heading border-1 border-top">
             <div class="mt-3">Master</div>
         </li>

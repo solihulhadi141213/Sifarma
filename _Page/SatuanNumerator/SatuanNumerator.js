@@ -1,7 +1,7 @@
 //Fungsi Menampilkan Data
 function ShowData() {
     var ProsesFilter = $('#ProsesFilter').serialize();
-    var $tabel       = $('#TabelSediaan');
+    var $tabel       = $('#TabelSatuanNumerator');
 
     // Tambahkan efek visual loading (opacity menurun)
     $tabel.css({
@@ -12,7 +12,7 @@ function ShowData() {
 
     $.ajax({
         type   : 'POST',
-        url    : '_Page/Sediaan/TabelSediaan.php',
+        url    : '_Page/SatuanNumerator/TabelSatuanNumerator.php',
         data   : ProsesFilter,
         success: function(data) {
             // Ganti isi tabel tanpa mengganti elemen induk
@@ -49,7 +49,7 @@ $(document).ready(function() {
         var keyword_by =$('#KeywordBy').val();
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/Sediaan/FormFilter.php',
+            url 	    : '_Page/SatuanNumerator/FormFilter.php',
             data        : {keyword_by: keyword_by},
             success     : function(data){
                 $('#FormFilter').html(data);
@@ -90,7 +90,7 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/Sediaan/FormExport.php',
+            url 	    : '_Page/SatuanNumerator/FormExport.php',
             success     : function(data){
                 $('#FormExport').html(data);
             }
@@ -112,7 +112,7 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/Sediaan/FormImport.php',
+            url 	    : '_Page/SatuanNumerator/FormImport.php',
             success     : function(data){
                 $('#FormImport').html(data);
             }
@@ -149,7 +149,7 @@ $(document).ready(function() {
         `);
 
         $.ajax({
-            url: '_Page/Sediaan/ProsesImportSediaan.php',
+            url: '_Page/SatuanNumerator/ProsesImport.php',
             type: 'POST',
             data: formData,
             contentType: false,
@@ -189,11 +189,6 @@ $(document).ready(function() {
                 logHtml += '</ul>';
 
                 $('#LogImport').html(logHtml);
-
-                // Reset Form Filter
-                $("#ProsesFilter")[0].reset();
-
-                // Tampilkan Data
                 ShowData();
             },
             error: function () {
@@ -210,15 +205,7 @@ $(document).ready(function() {
         // Menampilkan Datalist Category Dengan AJAX
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/Sediaan/list_category.php',
-            success     : function(data){
-                $('#list_category').html(data);
-            }
-        });
-
-        $.ajax({
-            type 	    : 'POST',
-            url 	    : '_Page/Sediaan/list_system.php',
+            url 	    : '_Page/SatuanNumerator/list_system.php',
             success     : function(data){
                 $('#list_system').html(data);
             }
@@ -238,7 +225,7 @@ $(document).ready(function() {
         // Ajax Request
         $.ajax({
             type     : 'POST',
-            url      : '_Page/Sediaan/ProsesTambah.php',
+            url      : '_Page/SatuanNumerator/ProsesTambah.php',
             dataType : 'json',
             data     : ProsesTambah,
 
@@ -257,8 +244,8 @@ $(document).ready(function() {
                     $('#ModalTambah').modal('hide');
 
                     // Reset Form
-                    $("#ProsesTambah")[0].reset();
                     $("#ProsesFilter")[0].reset();
+                    $("#ProsesTambah")[0].reset();
 
                     // Reload detail pemeriksaan
                     ShowData();
@@ -293,7 +280,7 @@ $(document).ready(function() {
     $(document).on('click', '.modal_edit', function () {
 
         //tangkap data 'kfa_code' dan buat variabel
-        var id_referensi_sediaan   = $(this).data('id');
+        var id_referensi_numerator   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalEdit').modal('show');
@@ -304,8 +291,8 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/Sediaan/FormEdit.php',
-            data        : {id_referensi_sediaan: id_referensi_sediaan},
+            url 	    : '_Page/SatuanNumerator/FormEdit.php',
+            data        : {id_referensi_numerator: id_referensi_numerator},
             success     : function(data){
                 $('#FormEdit').html(data);
 
@@ -315,15 +302,7 @@ $(document).ready(function() {
                 // Menampilkan Datalist Category Dengan AJAX
                 $.ajax({
                     type 	    : 'POST',
-                    url 	    : '_Page/Sediaan/list_category.php',
-                    success     : function(data){
-                        $('#list_category_edit').html(data);
-                    }
-                });
-
-                $.ajax({
-                    type 	    : 'POST',
-                    url 	    : '_Page/Sediaan/list_system.php',
+                    url 	    : '_Page/SatuanNumerator/list_system.php',
                     success     : function(data){
                         $('#list_system_edit').html(data);
                     }
@@ -345,7 +324,7 @@ $(document).ready(function() {
         // Ajax Request
         $.ajax({
             type     : 'POST',
-            url      : '_Page/Sediaan/ProsesEdit.php',
+            url      : '_Page/SatuanNumerator/ProsesEdit.php',
             dataType : 'json',
             data     : ProsesEdit,
 
@@ -395,7 +374,7 @@ $(document).ready(function() {
     $(document).on('click', '.modal_hapus', function () {
 
         //tangkap data 'kfa_code' dan buat variabel
-        var id_referensi_sediaan   = $(this).data('id');
+        var id_referensi_numerator   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalHapus').modal('show');
@@ -406,8 +385,8 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/Sediaan/FormHapus.php',
-            data        : {id_referensi_sediaan: id_referensi_sediaan},
+            url 	    : '_Page/SatuanNumerator/FormHapus.php',
+            data        : {id_referensi_numerator: id_referensi_numerator},
             success     : function(data){
                 $('#FormHapus').html(data);
             }
@@ -422,12 +401,12 @@ $(document).ready(function() {
         var ProsesHapus = $(this).serialize();
 
         //Loading Notifikasi
-        $('#NotifikasiHapus').html('<small class="text-muted">Menyimpan data...</small>');
+        $('#NotifikasiHapus').html('<small class="text-muted">Loading...</small>');
 
         // Ajax Request
         $.ajax({
             type     : 'POST',
-            url      : '_Page/Sediaan/ProsesHapus.php',
+            url      : '_Page/SatuanNumerator/ProsesHapus.php',
             dataType : 'json',
             data     : ProsesHapus,
 
