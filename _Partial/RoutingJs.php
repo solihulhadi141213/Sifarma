@@ -22,6 +22,8 @@
             "SettingSimrs"     => "_Page/SettingSimrs/SettingSimrs.js",
             "SettingSatuSehat" => "_Page/SettingSatuSehat/SettingSatuSehat.js",
             "ApiKey"           => "_Page/ApiKey/ApiKey.js",
+            "Sediaan"          => "_Page/Sediaan/Sediaan.js",
+            "Medication"       => "_Page/Medication/Medication.js",
             "Aktivitas"        => "_Page/Aktivitas/Aktivitas.js",
             "Help"             => "_Page/Help/Help.js"
         ];

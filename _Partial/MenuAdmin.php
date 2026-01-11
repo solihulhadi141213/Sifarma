@@ -70,11 +70,19 @@
             </a>
         </li>
         <li class="nav-heading border-1 border-top">
+            <div class="mt-3">Referensi</div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link <?php if($PageMenu=="Sediaan"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=Sediaan">
+                <i class="bi bi-box"></i> <span>Sediaan</span>
+            </a>
+        </li>
+        <li class="nav-heading border-1 border-top">
             <div class="mt-3">Master</div>
         </li>
          <li class="nav-item">
             <a class="nav-link <?php if($PageMenu=="Medication"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=Medication">
-                <i class="bi bi-list-columns"></i> <span>Obat & Alkes</span>
+                <i class="bi bi-clipboard"></i> <span>Obat & Alkes</span>
             </a>
         </li>
         <li class="nav-item">

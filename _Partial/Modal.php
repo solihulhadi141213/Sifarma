@@ -13,6 +13,8 @@
             "SettingSimrs"     => "_Page/SettingSimrs/ModalSettingSimrs.php",
             "SettingSatuSehat" => "_Page/SettingSatuSehat/ModalSettingSatuSehat.php",
             "ApiKey"           => "_Page/ApiKey/ModalApiKey.php",
+            "Sediaan"          => "_Page/Sediaan/ModalSediaan.php",
+            "Medication"       => "_Page/Medication/ModalMedication.php",
             "Aktivitas"        => "_Page/Aktivitas/ModalAktivitas.php",
             "Help"             => "_Page/Help/ModalHelp.php"
         ];
