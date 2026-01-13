@@ -48,7 +48,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#ModalTambahManual">
+                                        <a class="dropdown-item modal_tambah_manual" href="javascript:void(0)">
                                             <i class="bi bi-plus"></i> Tambah Manual
                                         </a>
                                     </li>

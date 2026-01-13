@@ -274,7 +274,7 @@
 
     // VALIDASI RESPONSE SATUSEHAT
     if ($http_code !== 201) {
-        $msg = 'Gagal mengirim Observation ke SATUSEHAT';
+        $msg = 'Gagal mengirim Medication ke SATUSEHAT';
 
         if (($result['resourceType'] ?? '') === 'OperationOutcome') {
             $msg = $result['issue'][0]['details']['text']

@@ -1301,5 +1301,43 @@
     }
 
 
+    function debugCurlRequest($url, $payload, $headers) {
+        $debug_info = [
+            'timestamp' => date('Y-m-d H:i:s'),
+            'url' => $url,
+            'method' => 'POST',
+            'headers' => $headers,
+            'payload_size' => strlen(json_encode($payload)),
+            'curl_version' => curl_version()['version'] ?? 'unknown'
+        ];
+        
+        // Cek jika URL valid
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            $debug_info['url_valid'] = false;
+            $debug_info['url_error'] = 'URL tidak valid';
+        } else {
+            $debug_info['url_valid'] = true;
+            
+            // Cek koneksi ke host
+            $url_parts = parse_url($url);
+            $host = $url_parts['host'] ?? '';
+            if (!empty($host)) {
+                $debug_info['host'] = $host;
+                $debug_info['dns_lookup'] = gethostbyname($host);
+                $debug_info['ping'] = @fsockopen($host, $url_parts['port'] ?? 443, $errno, $errstr, 5);
+                if ($debug_info['ping']) {
+                    fclose($debug_info['ping']);
+                    $debug_info['ping'] = true;
+                } else {
+                    $debug_info['ping'] = false;
+                    $debug_info['ping_error'] = $errstr;
+                }
+            }
+        }
+        
+        return $debug_info;
+    }
+
+
 
 ?>

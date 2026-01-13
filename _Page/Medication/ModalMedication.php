@@ -224,7 +224,7 @@ TAMBAH MEDICATION MANUAL
 ==========================================================================================
 -->
 <div class="modal fade" id="ModalTambahManual" tabindex="-1">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesTambahManual" autocomplete="off">
                 <div class="modal-header">
@@ -232,111 +232,10 @@ TAMBAH MEDICATION MANUAL
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row mb-3">
-                        <div class="col-5"><small><b>A. Informasi Umum</b></small></div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="medication_code_manual"><small>Kode Lokal</small></label></div>
-                        <div class="col-md-7">
-                            <div class="input-group">
-                                <input type="text" name="medication_code" id="medication_code_manual" class="form-control">
-                                <a href="javascript:void(0)" class="input-group-text generate_kode_lokal" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Generate Kode Lokal">
-                                    <i class="bi bi-repeat"></i>
-                                </a>
-                            </div>
-                            <small>
-                                <small class="text text-grayish">Kode lokal obat/alkes yang di gunakan pada faskes</small>
-                            </small>
+                    <div class="row">
+                        <div class="col-md-12" id="FormTambahManual">
+                            <!-- Form Tambah Manual -->
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="id_medication_manual"><small><i>ID Medication</i></small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="id_medication" id="id_medication_manual" class="form-control">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="insert_medication" id="insert_medication" value="true">
-                                <label class="form-check-label" for="insert_medication">
-                                    <small>
-                                        <small class="text text-grayish">Kirim resource <i>ID Medication</i> Ke Satu Sehat</small>
-                                    </small>
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="medication_name_manual"><small>Nama/Merek</small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="medication_name" id="medication_name_manual" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="medication_category_manual"><small>Kategori</small></label></div>
-                        <div class="col-md-7">
-                            <select name="medication_category" id="medication_category_manual" class="form-control">
-                                <option value="">Pilih Kategori</option>
-                                <option value="Obat">Obat</option>
-                                <option value="Alkes">Alkes</option>
-                                <option value="Lainnya">Lainnya</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="racikan_code"><small>Kategori Racikan</small></label></div>
-                        <div class="col-md-7">
-                            <select name="racikan_code" id="racikan_code" class="form-control">
-                                <option value="">Pilih</option>
-                                <option value="NC">Non-compound</option>
-                                <option value="C">Compound</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-3">
-                        <div class="col-12"><small><b>B. Kamus Farmasi & Alat Kesehatan (KFA)</b></small></div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="kfa_code_manual"><small>Kode KFA</small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="kfa_code" id="kfa_code_manual" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="kfa_display_manual"><small>Nama KFA</small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="kfa_display" id="kfa_display_manual" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-3">
-                        <div class="col-12"><small><b>C. Informasi Sediaan</b></small></div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="sediaan_code"><small>Kode Sediaan</small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="sediaan_code" id="sediaan_code" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-5"><label for="sediaan_display"><small>Nama Sediaan</small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="sediaan_display" id="sediaan_display" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-3">
-                        <div class="col-5"><small><b>D. Manufaktur</b></small></div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col-md-5"><label for="manufacturer_id"><small><i>ID Manufacturer</i></small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="manufacturer_id" id="manufacturer_id" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <div class="col-md-5"><label for="manufacturer_name_manual"><small><i>Manufacturer Name</i></small></label></div>
-                        <div class="col-md-7">
-                            <input type="text" name="manufacturer_name" id="manufacturer_name_manual" class="form-control" value="">
-                        </div>
-                    </div>
-                    <div class="row mb-3 mt-3">
-                        <div class="col-12"><small><b><i>E. Ingredient</i></b></small></div>
                     </div>
                     <div class="row">
                         <div class="col-md-12" id="NotifikasiTambahManual">
@@ -347,6 +246,44 @@ TAMBAH MEDICATION MANUAL
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-rounded">
                         <i class="bi bi-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+==========================================================================================
+TAMBAH INGRIDIENT
+==========================================================================================
+-->
+<div class="modal fade" id="ModalTambahIngridient" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border border-2 border-primary-subtle rounded-4 shadow-lg">
+            <form action="javascript:void(0);" id="ProsesTambahIngridient" autocomplete="off">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Ingridient</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="row">
+                        <div class="col-md-12" id="FormTambahIngridient">
+                            <!-- Form Tambah -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiTambahIngridient">
+                            <!-- Notifikasi Proses -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="submit" class="btn btn-primary btn-rounded">
+                        <i class="bi bi-plus"></i> Tambahkan
                     </button>
                     <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
                         <i class="bi bi-x"></i> Tutup

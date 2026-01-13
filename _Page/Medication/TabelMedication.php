@@ -119,6 +119,7 @@
 
                 // Memotong Karakter ID Medication
                 if(empty($data['id_medication'])){
+                    $id_medication = "";
                     $id_medication_display = "-";
                 }else{
                     $id_medication       = $data['id_medication'];
