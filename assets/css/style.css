@@ -311,23 +311,28 @@ h6 {
   animation: fadeIn 1.2s ease-out;
 }
 .nav_background {
-  background: #5833dc;
-  background: linear-gradient(90deg, #5833dc 0%, #5833dc 54%, #5833dc 100%);
+  background: #215E61;
+  background: linear-gradient(90deg, #215E61 0%, #215E61 54%, #215E61 100%);
 }
 .landing_background {
   min-height: 100vh;
   background: 
-    radial-gradient(at 20% 30%, rgba(138, 43, 226, 0.6) 0%, transparent 60%),
-    radial-gradient(at 80% 20%, rgba(255, 0, 128, 0.5) 0%, transparent 60%),
-    radial-gradient(at 50% 80%, rgba(0, 128, 255, 0.5) 0%, transparent 70%),
-    linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    radial-gradient(at 20% 30%, rgba(1, 177, 124, 0.6) 0%, transparent 60%),
+    radial-gradient(at 80% 20%, rgba(10, 158, 138, 0.5) 0%, transparent 60%),
+    radial-gradient(at 50% 80%, rgba(2, 119, 100, 0.5) 0%, transparent 70%),
+    linear-gradient(135deg, #1181cb 0%, #25fcd8 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
 }
 .menu_background {
-  background: #2f1b77;
-  background: linear-gradient(90deg, #2f1b77 0%, #2f1b77 35%, #2f1b77 100%);
+  background: #11463d;
+  background: linear-gradient(90deg, #11463d 0%, #11463d 35%, #11463d 100%);
+}
+
+.nav_background .btn-close {
+    filter: invert(1) grayscale(100%);
+    opacity: 1;
 }
 /* Card */
 .card {
@@ -812,7 +817,7 @@ h6 {
 
 .sidebar-nav .nav-link.collapsed {
   color: #ffffff;
-  background: #2f1b77;
+  background: #11463d;
 }
 
 .sidebar-nav .nav-link.collapsed i {
@@ -1654,4 +1659,41 @@ body .title_page_app {
 /* Menetapkan tampilan rich text editor quil */
 .ql-toolbar.ql-snow {
     background: white;
+}
+
+
+/* Memperbaiki Tampilan Modal Fullscreen */
+.modal-fullscreen .modal-content > form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.modal-fullscreen .modal-body {
+    flex: 1 1 auto;
+    overflow-y: auto;
+}
+
+/* Agar baris menjadi pointer */
+tr.modal_detail {
+    cursor: pointer;
+}
+
+tr.modal_detail:hover {
+    background-color: #f8f9fa;
+}
+
+tr.modal_rincian_durasi_pelayanan {
+    cursor: pointer;
+}
+
+tr.pilih_kunjungan {
+    cursor: pointer;
+}
+
+/* Form Yang Readonly akan menjadi abu-abu */
+input[readonly] {
+    background-color: #f1f1f1; /* abu-abu pucat */
+    color: #6c757d;            /* teks abu-abu */
+    cursor: not-allowed;
 }

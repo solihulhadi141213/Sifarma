@@ -26,6 +26,7 @@
             "SatuanNumerator"   => "_Page/SatuanNumerator/SatuanNumerator.js",
             "SatuanDenominator" => "_Page/SatuanDenominator/SatuanDenominator.js",
             "Medication"        => "_Page/Medication/Medication.js",
+            "MedicationRequest" => "_Page/MedicationRequest/MedicationRequest.js",
             "Aktivitas"         => "_Page/Aktivitas/Aktivitas.js",
             "Help"              => "_Page/Help/Help.js"
         ];
