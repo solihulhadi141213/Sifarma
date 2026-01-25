@@ -16,6 +16,7 @@
             "Sediaan"           => "_Page/Sediaan/ModalSediaan.php",
             "SatuanNumerator"   => "_Page/SatuanNumerator/ModalSatuanNumerator.php",
             "SatuanDenominator" => "_Page/SatuanDenominator/ModalSatuanDenominator.php",
+            "SatuanDosis"       => "_Page/SatuanDosis/ModalSatuanDosis.php",
             "Medication"        => "_Page/Medication/ModalMedication.php",
             "MedicationRequest" => "_Page/MedicationRequest/ModalMedicationRequest.php",
             "Aktivitas"         => "_Page/Aktivitas/ModalAktivitas.php",

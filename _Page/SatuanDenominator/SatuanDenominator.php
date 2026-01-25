@@ -68,8 +68,8 @@
                                 <thead>
                                     <tr>
                                         <td align="center"><b>No</b></td>
-                                        <td><b><i>Code</i></b></td>
                                         <td><b><i>Display</i></b></td>
+                                        <td><b><i>Code</i></b></td>
                                         <td><b><i>System</i></b></td>
                                         <td align="center"><b>Opsi</b></td>
                                     </tr>

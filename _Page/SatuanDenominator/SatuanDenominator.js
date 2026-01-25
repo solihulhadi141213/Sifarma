@@ -189,6 +189,8 @@ $(document).ready(function() {
                 logHtml += '</ul>';
 
                 $('#LogImport').html(logHtml);
+                $("#ProsesFilter")[0].reset();
+                $('#page').val(1);
                 ShowData();
             },
             error: function () {
@@ -248,6 +250,8 @@ $(document).ready(function() {
                     $("#ProsesTambah")[0].reset();
 
                     // Reload detail pemeriksaan
+                    $("#ProsesFilter")[0].reset();
+                    $('#page').val(1);
                     ShowData();
 
                     // Toast Proses Berhasil

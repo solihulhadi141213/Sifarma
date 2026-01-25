@@ -10,7 +10,7 @@
     if(empty($SessionIdAccess)){
         echo '
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="6" class="text-center">
                     <small class="text-danger">Sesi Akses Sudah Berakhir! Silahkan Login Ulang!</small>
                 </td>
             </tr>
@@ -44,7 +44,7 @@
         if(!empty($_POST['OrderBy'])){
             $OrderBy=$_POST['OrderBy'];
         }else{
-            $OrderBy="id_referensi_denominator";
+            $OrderBy="id_referensi_satuan_dosis";
         }
         //Atur Page
         if(!empty($_POST['page'])){
@@ -56,15 +56,15 @@
         }
         if(empty($keyword_by)){
             if(empty($keyword)){
-                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_denominator FROM referensi_denominator"));
+                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_satuan_dosis FROM referensi_satuan_dosis"));
             }else{
-                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_denominator FROM referensi_denominator WHERE code_denominator like '%$keyword%' OR display_denominator like '%$keyword%' OR system_denominator like '%$keyword%'"));
+                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_satuan_dosis FROM referensi_satuan_dosis WHERE nama_satuan_dosis like '%$keyword%' OR unit_satuan_dosis like '%$keyword%' OR code_satuan_dosis like '%$keyword%' OR system_satuan_dosis like '%$keyword%'"));
             }
         }else{
             if(empty($keyword)){
-                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_denominator FROM referensi_denominator"));
+                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_satuan_dosis FROM referensi_satuan_dosis"));
             }else{
-                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_denominator FROM referensi_denominator WHERE $keyword_by like '%$keyword%'"));
+                $jml_data = mysqli_num_rows(mysqli_query($Conn, "SELECT id_referensi_satuan_dosis FROM referensi_satuan_dosis WHERE $keyword_by like '%$keyword%'"));
             }
         }
         
@@ -73,7 +73,7 @@
         if(empty($jml_data)){
             echo '
                 <tr>
-                    <td colspan="5" class="text-center">
+                    <td colspan="6" class="text-center">
                         <small class="text-danger">Tidak Ada Data Yang Ditampilkan!</small>
                     </td>
                 </tr>
@@ -83,32 +83,34 @@
             //KONDISI PENGATURAN MASING FILTER
              if(empty($keyword_by)){
                 if(empty($keyword)){
-                    $query = mysqli_query($Conn, "SELECT*FROM referensi_denominator ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
+                    $query = mysqli_query($Conn, "SELECT*FROM referensi_satuan_dosis ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
                 }else{
-                    $query = mysqli_query($Conn, "SELECT*FROM referensi_denominator WHERE code_denominator like '%$keyword%' OR display_denominator like '%$keyword%' OR system_denominator like '%$keyword%' ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
+                    $query = mysqli_query($Conn, "SELECT*FROM referensi_satuan_dosis WHERE nama_satuan_dosis like '%$keyword%' OR unit_satuan_dosis like '%$keyword%' OR code_satuan_dosis like '%$keyword%' OR system_satuan_dosis like '%$keyword%' ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
                 }
             }else{
                 if(empty($keyword)){
-                    $query = mysqli_query($Conn, "SELECT*FROM referensi_denominator ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
+                    $query = mysqli_query($Conn, "SELECT*FROM referensi_satuan_dosis ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
                 }else{
-                    $query = mysqli_query($Conn, "SELECT*FROM referensi_denominator WHERE $keyword_by like '%$keyword%' ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
+                    $query = mysqli_query($Conn, "SELECT*FROM referensi_satuan_dosis WHERE $keyword_by like '%$keyword%' ORDER BY $OrderBy $ShortBy LIMIT $posisi, $batas");
                 }
             }
             while ($data = mysqli_fetch_array($query)) {
-                $id_referensi_denominator = $data['id_referensi_denominator'];
-                $code_denominator         = $data['code_denominator'];
-                $display_denominator      = $data['display_denominator'];
-                $system_denominator       = $data['system_denominator'];
+                $id_referensi_satuan_dosis = $data['id_referensi_satuan_dosis'];
+                $nama_satuan_dosis         = $data['nama_satuan_dosis'];
+                $unit_satuan_dosis         = $data['unit_satuan_dosis'];
+                $code_satuan_dosis         = $data['code_satuan_dosis'];
+                $system_satuan_dosis       = $data['system_satuan_dosis'];
                
                 // Tampilkan Data
                 echo '
                     <tr>
                         <td class="text-center"><small>'.$no.'</small></td>
-                        <td><small>'.$display_denominator.'</small></td>
-                        <td><small>'.$code_denominator.'</small></td>
+                        <td><small>'.$nama_satuan_dosis.'</small></td>
+                        <td><small>'.$unit_satuan_dosis.'</small></td>
+                        <td><small>'.$code_satuan_dosis.'</small></td>
                         <td>
                             <small>
-                                <a href="'.$system_denominator.'" target="_blank" class="text text-decoration-underline">'.$system_denominator.'</a>
+                                <a href="'.$system_satuan_dosis.'" target="_blank" class="text text-decoration-underline">'.$system_satuan_dosis.'</a>
                             </small>
                         </td>
                         <td class="text-center">
@@ -120,12 +122,12 @@
                                     <h6>Option</h6>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item modal_edit" href="javascript:void(0)" data-id="'.$id_referensi_denominator .'">
+                                    <a class="dropdown-item modal_edit" href="javascript:void(0)" data-id="'.$id_referensi_satuan_dosis .'">
                                         <i class="bi bi-pencil"></i> Edit
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item modal_hapus" href="javascript:void(0)" data-id="'.$id_referensi_denominator .'">
+                                    <a class="dropdown-item modal_hapus" href="javascript:void(0)" data-id="'.$id_referensi_satuan_dosis .'">
                                         <i class="bi bi-x"></i> Hapus
                                     </a>
                                 </li>

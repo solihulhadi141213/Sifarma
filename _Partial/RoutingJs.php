@@ -25,6 +25,7 @@
             "Sediaan"           => "_Page/Sediaan/Sediaan.js",
             "SatuanNumerator"   => "_Page/SatuanNumerator/SatuanNumerator.js",
             "SatuanDenominator" => "_Page/SatuanDenominator/SatuanDenominator.js",
+            "SatuanDosis"       => "_Page/SatuanDosis/SatuanDosis.js",
             "Medication"        => "_Page/Medication/Medication.js",
             "MedicationRequest" => "_Page/MedicationRequest/MedicationRequest.js",
             "Aktivitas"         => "_Page/Aktivitas/Aktivitas.js",

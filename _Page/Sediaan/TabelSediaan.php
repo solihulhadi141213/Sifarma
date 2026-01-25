@@ -112,15 +112,15 @@
                 echo '
                     <tr>
                         <td class="text-center"><small>'.$no.'</small></td>
-                        <td><small>'.$code.'</small></td>
                         <td><small>'.$display.'</small></td>
+                        <td><small>'.$category.'</small></td>
+                        <td><small>'.$group_label.'</small></td>
+                        <td><small>'.$code.'</small></td>
                         <td>
                             <small>
                                 <a href="'.$system_referensi.'" target="_blank" class="text text-decoration-underline">'.$system_referensi.'</a>
                             </small>
                         </td>
-                        <td><small>'.$category.'</small></td>
-                        <td><small>'.$group_label.'</small></td>
                         <td class="text-center">
                             <button type="button" class="btn btn-sm btn-outline-dark btn-floating"  data-bs-toggle="dropdown" aria-expanded="false">
                                 <i class="bi bi-three-dots-vertical"></i>

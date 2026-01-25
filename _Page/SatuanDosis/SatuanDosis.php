@@ -1,6 +1,6 @@
 <?php
     //Cek Aksesibilitas ke halaman ini
-    $IjinAksesSaya=IjinAksesSaya($Conn,$SessionIdAccess,'Yw29wopHlztYeHUJW67syfO7quPLQvmPq9kS');
+    $IjinAksesSaya=IjinAksesSaya($Conn,$SessionIdAccess,'EQxQwv6ZDPyB9vqc3Fp5MkKe6ninWGlnEX06');
     if($IjinAksesSaya!=="Ada"){
         include "_Page/Error/NoAccess.php";
     }else{
@@ -8,13 +8,13 @@
     <div class="pagetitle">
         <h1>
             <a href="">
-                <i class="bi bi-box"></i> Sediaan</a>
+                <i class="bi bi-tag"></i> Satuan - Dosis</a>
             </a>
         </h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                <li class="breadcrumb-item active">Sediaan</li>
+                <li class="breadcrumb-item active">Satuan - Dosis</li>
             </ol>
         </nav>
     </div>
@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <small>
-                        Halaman ini digunakan untuk mengelola referensi sediaan. Informasi tersebut berguna pada saat mengisi kelengkapan informasi <i>Medication</i>
+                        Halaman ini digunakan untuk mengelola referensi satuan dosis. Informasi tersebut berguna pada saat mengisi kelengkapan informasi resep.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </small>
                 </div>
@@ -68,17 +68,16 @@
                                 <thead>
                                     <tr>
                                         <td align="center"><b>No</b></td>
-                                        <td><b><i>Display</i></b></td>
-                                        <td><b><i>Category</i></b></td>
-                                        <td><b><i>Group</i></b></td>
+                                        <td><b>Nama Satuan</b></td>
+                                        <td><b><i>Unit</i></b></td>
                                         <td><b><i>Code</i></b></td>
                                         <td><b><i>System</i></b></td>
                                         <td align="center"><b>Opsi</b></td>
                                     </tr>
                                 </thead>
-                                <tbody id="TabelSediaan">
+                                <tbody id="TabelSatuanDosis">
                                     <tr>
-                                        <td class="text-center" colspan="7">
+                                        <td class="text-center" colspan="6">
                                             <small>Loading...</small>
                                         </td>
                                     </tr>

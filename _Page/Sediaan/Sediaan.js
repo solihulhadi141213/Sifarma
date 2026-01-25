@@ -194,6 +194,8 @@ $(document).ready(function() {
                 $("#ProsesFilter")[0].reset();
 
                 // Tampilkan Data
+                $("#ProsesFilter")[0].reset();
+                $('#page').val(1);
                 ShowData();
             },
             error: function () {
@@ -261,6 +263,8 @@ $(document).ready(function() {
                     $("#ProsesFilter")[0].reset();
 
                     // Reload detail pemeriksaan
+                    $("#ProsesFilter")[0].reset();
+                    $('#page').val(1);
                     ShowData();
 
                     // Toast Proses Berhasil

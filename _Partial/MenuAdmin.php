@@ -83,7 +83,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($PageMenu=="satuanDosis"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=satuanDosis">
+            <a class="nav-link <?php if($PageMenu=="SatuanDosis"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=SatuanDosis">
                 <i class="bi bi-tag"></i> <span>Satuan Dosis</span>
             </a>
         </li>

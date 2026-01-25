@@ -1,7 +1,7 @@
 //Fungsi Menampilkan Data
 function ShowData() {
     var ProsesFilter = $('#ProsesFilter').serialize();
-    var $tabel       = $('#TabelSatuanNumerator');
+    var $tabel       = $('#TabelSatuanDosis');
 
     // Tambahkan efek visual loading (opacity menurun)
     $tabel.css({
@@ -12,7 +12,7 @@ function ShowData() {
 
     $.ajax({
         type   : 'POST',
-        url    : '_Page/SatuanNumerator/TabelSatuanNumerator.php',
+        url    : '_Page/SatuanDosis/TabelSatuanDosis.php',
         data   : ProsesFilter,
         success: function(data) {
             // Ganti isi tabel tanpa mengganti elemen induk
@@ -49,7 +49,7 @@ $(document).ready(function() {
         var keyword_by =$('#KeywordBy').val();
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/SatuanNumerator/FormFilter.php',
+            url 	    : '_Page/SatuanDosis/FormFilter.php',
             data        : {keyword_by: keyword_by},
             success     : function(data){
                 $('#FormFilter').html(data);
@@ -90,7 +90,7 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/SatuanNumerator/FormExport.php',
+            url 	    : '_Page/SatuanDosis/FormExport.php',
             success     : function(data){
                 $('#FormExport').html(data);
             }
@@ -112,7 +112,7 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/SatuanNumerator/FormImport.php',
+            url 	    : '_Page/SatuanDosis/FormImport.php',
             success     : function(data){
                 $('#FormImport').html(data);
             }
@@ -149,7 +149,7 @@ $(document).ready(function() {
         `);
 
         $.ajax({
-            url: '_Page/SatuanNumerator/ProsesImport.php',
+            url: '_Page/SatuanDosis/ProsesImport.php',
             type: 'POST',
             data: formData,
             contentType: false,
@@ -189,6 +189,7 @@ $(document).ready(function() {
                 logHtml += '</ul>';
 
                 $('#LogImport').html(logHtml);
+
                 $("#ProsesFilter")[0].reset();
                 $('#page').val(1);
                 ShowData();
@@ -207,7 +208,7 @@ $(document).ready(function() {
         // Menampilkan Datalist Category Dengan AJAX
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/SatuanNumerator/list_system.php',
+            url 	    : '_Page/SatuanDosis/list_system.php',
             success     : function(data){
                 $('#list_system').html(data);
             }
@@ -227,13 +228,12 @@ $(document).ready(function() {
         // Ajax Request
         $.ajax({
             type     : 'POST',
-            url      : '_Page/SatuanNumerator/ProsesTambah.php',
+            url      : '_Page/SatuanDosis/ProsesTambah.php',
             dataType : 'json',
             data     : ProsesTambah,
 
             success: function(response){
 
-                var payload  = response.payload;
                 var status  = response.status;
                 var message = response.message || 'Proses berhasil';
 
@@ -246,7 +246,6 @@ $(document).ready(function() {
                     $('#ModalTambah').modal('hide');
 
                     // Reset Form
-                    $("#ProsesFilter")[0].reset();
                     $("#ProsesTambah")[0].reset();
 
                     // Reload detail pemeriksaan
@@ -284,7 +283,7 @@ $(document).ready(function() {
     $(document).on('click', '.modal_edit', function () {
 
         //tangkap data 'kfa_code' dan buat variabel
-        var id_referensi_numerator   = $(this).data('id');
+        var id_referensi_satuan_dosis   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalEdit').modal('show');
@@ -295,8 +294,8 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/SatuanNumerator/FormEdit.php',
-            data        : {id_referensi_numerator: id_referensi_numerator},
+            url 	    : '_Page/SatuanDosis/FormEdit.php',
+            data        : {id_referensi_satuan_dosis: id_referensi_satuan_dosis},
             success     : function(data){
                 $('#FormEdit').html(data);
 
@@ -306,7 +305,7 @@ $(document).ready(function() {
                 // Menampilkan Datalist Category Dengan AJAX
                 $.ajax({
                     type 	    : 'POST',
-                    url 	    : '_Page/SatuanNumerator/list_system.php',
+                    url 	    : '_Page/SatuanDosis/list_system.php',
                     success     : function(data){
                         $('#list_system_edit').html(data);
                     }
@@ -328,7 +327,7 @@ $(document).ready(function() {
         // Ajax Request
         $.ajax({
             type     : 'POST',
-            url      : '_Page/SatuanNumerator/ProsesEdit.php',
+            url      : '_Page/SatuanDosis/ProsesEdit.php',
             dataType : 'json',
             data     : ProsesEdit,
 
@@ -378,7 +377,7 @@ $(document).ready(function() {
     $(document).on('click', '.modal_hapus', function () {
 
         //tangkap data 'kfa_code' dan buat variabel
-        var id_referensi_numerator   = $(this).data('id');
+        var id_referensi_satuan_dosis   = $(this).data('id');
 
         //tampilkan modal
         $('#ModalHapus').modal('show');
@@ -389,8 +388,8 @@ $(document).ready(function() {
         //Tampilkan Form Dengan Ajax
         $.ajax({
             type 	    : 'POST',
-            url 	    : '_Page/SatuanNumerator/FormHapus.php',
-            data        : {id_referensi_numerator: id_referensi_numerator},
+            url 	    : '_Page/SatuanDosis/FormHapus.php',
+            data        : {id_referensi_satuan_dosis: id_referensi_satuan_dosis},
             success     : function(data){
                 $('#FormHapus').html(data);
             }
@@ -410,7 +409,7 @@ $(document).ready(function() {
         // Ajax Request
         $.ajax({
             type     : 'POST',
-            url      : '_Page/SatuanNumerator/ProsesHapus.php',
+            url      : '_Page/SatuanDosis/ProsesHapus.php',
             dataType : 'json',
             data     : ProsesHapus,
 
