@@ -29,13 +29,26 @@
     $access_email       = validateAndSanitizeInput($_POST['email_akses']);
     $id_access_group    = intval($_POST['akses']); // integer
 
+    // Tangkap Data Tidak wajib
+    if(empty($_POST['access_nik'])){
+        $access_nik = "";
+    }else{
+        $access_nik = $_POST['access_nik'];
+    }
+
+    if(empty($_POST['access_ihs'])){
+        $access_ihs = "";
+    }else{
+        $access_ihs = $_POST['access_ihs'];
+    }
+
     // --- Ambil id_access_group lama ---
     $id_access_group_lama = GetDetailData($Conn, 'access', 'id_access', $id_access, 'id_access_group');
 
     // --- Update data access ---
-    $sql = "UPDATE access SET id_access_group=?, access_name=?, access_email=?, access_contact=? WHERE id_access=?";
+    $sql = "UPDATE access SET id_access_group=?, access_name=?, access_email=?, access_contact=?, access_nik=?, access_ihs=? WHERE id_access=?";
     $stmt = $Conn->prepare($sql);
-    $stmt->bind_param("isssi", $id_access_group, $access_name, $access_email, $access_contact, $id_access);
+    $stmt->bind_param("isssssi", $id_access_group, $access_name, $access_email, $access_contact, $access_nik, $access_ihs, $id_access);
 
     if ($stmt->execute()) {
 

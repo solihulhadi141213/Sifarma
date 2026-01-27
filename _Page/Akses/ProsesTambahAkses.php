@@ -40,6 +40,19 @@
         exit;
     }
 
+    // Tangkap Data Tidak wajib
+    if(empty($_POST['access_nik'])){
+        $access_nik = "";
+    }else{
+        $access_nik = $_POST['access_nik'];
+    }
+
+    if(empty($_POST['access_ihs'])){
+        $access_ihs = "";
+    }else{
+        $access_ihs = $_POST['access_ihs'];
+    }
+
     // Hash password
     $password = password_hash($password1, PASSWORD_DEFAULT);
 
@@ -78,9 +91,9 @@
     try {
         // Insert ke access
         $stmt = $Conn->prepare("INSERT INTO access 
-            (id_access_group, access_name, access_email, access_contact, access_password, access_foto, access_client) 
-            VALUES (?, ?, ?, ?, ?, ?, 0)");
-        $stmt->bind_param("isssss", $akses, $nama_akses, $email_akses, $kontak_akses, $password, $namabaru);
+            (id_access_group, access_name, access_email, access_contact, access_nik, access_ihs, access_password, access_foto, access_client) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, 0)");
+        $stmt->bind_param("isssssss", $akses, $nama_akses, $email_akses, $kontak_akses, $access_nik, $access_ihs, $password, $namabaru);
         if(!$stmt->execute()){
             throw new Exception("Gagal insert ke tabel access");
         }

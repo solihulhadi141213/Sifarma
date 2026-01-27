@@ -77,6 +77,27 @@
             </div>
             <div class="row mb-3">
                 <div class="col col-md-4">
+                    <label for="access_nik_edit">NIK / KTP</label>
+                </div>
+                <div class="col col-md-8">
+                    <input type="text" name="access_nik" id="access_nik_edit" class="form-control" value="'.$Data['access_nik'].'">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col col-md-4">
+                    <label for="access_ihs_edit">ID IHS</label>
+                </div>
+                <div class="col col-md-8">
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-describedby="modal_cari_ihs2" name="access_ihs" id="access_ihs_edit" value="'.$Data['access_ihs'].'">
+                        <span class="input-group-text" class="text-primary" id="modal_cari_ihs2" style="cursor: pointer">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col col-md-4">
                     <label for="email_akses_edit">Email</label>
                 </div>
                 <div class="col col-md-8">

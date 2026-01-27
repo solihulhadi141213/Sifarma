@@ -6,6 +6,8 @@
         $access_name="";
         $access_email="";
         $access_contact="";
+        $access_nik="";
+        $access_ihs="";
         $access_foto="";
         $access_client="";
         $id_access_group="";
@@ -14,6 +16,8 @@
         $access_name=$DataAccessSession['access_name'];
         $access_email=$DataAccessSession['access_email'];
         $access_contact=$DataAccessSession['access_contact'];
+        $access_nik=$DataAccessSession['access_nik'];
+        $access_ihs=$DataAccessSession['access_ihs'];
         if(empty($DataAccessSession['access_foto'])){
             $access_foto="No-Image.png";
         }else{

@@ -95,7 +95,7 @@
     </div>
 </div>
 <div class="modal fade" id="ModalTambahAkses" tabindex="-1">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesTambahAkses">
                 <div class="modal-header">
@@ -106,41 +106,69 @@
                     <div class="row mb-3">
                         <div class="col-4">
                             <label for="nama_akses">
-                                <small>Nama</small>
+                                <small>* Nama Lengkap</small>
                             </label>
                         </div>
                         <div class="col-8">
-                            <input type="text" name="nama_akses" id="nama_akses" class="form-control">
+                            <input type="text" name="nama_akses" id="nama_akses" class="form-control" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-4">
                             <label for="kontak_akses">
-                                <small>Kontak</small>
+                                <small>* Nomor Kontak</small>
                             </label>
                         </div>
                         <div class="col-8">
-                            <input type="text" name="kontak_akses" id="kontak_akses" class="form-control" placeholder="62">
+                            <input type="text" name="kontak_akses" id="kontak_akses" class="form-control" placeholder="62" required>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-4">
                             <label for="email_akses">
-                                <small>Email</small>
+                                <small>* Alamat Email</small>
                             </label>
                         </div>
                         <div class="col-8">
-                            <input type="email" name="email_akses" id="email_akses" class="form-control" placeholder="alamat_email@domain.com">
+                            <input type="email" name="email_akses" id="email_akses" class="form-control" placeholder="alamat_email@domain.com" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <label for="access_nik">
+                                <small>NIK/KTP</small>
+                            </label>
+                        </div>
+                        <div class="col-8">
+                            <input type="text" name="access_nik" id="access_nik" class="form-control access_nik">
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            <label for="access_ihs">
+                                <small>ID IHS</small>
+                            </label>
+                        </div>
+                        <div class="col-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" aria-describedby="modal_cari_ihs" name="access_ihs" id="access_ihs">
+                                <span class="input-group-text" class="text-primary" id="modal_cari_ihs" style="cursor: pointer">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                            </div>
+                            <small class="text text-grayish">
+                                <small>ID Practitioner Dari Satu Sehat - Cari dari resource satu sehat atau isi secara manual</small>
+                            </small>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col-4">
                             <label for="akses">
-                                <small>Entitas/Group</small>
+                                <small>* Entitas/Group</small>
                             </label>
                         </div>
                         <div class="col-8">
-                            <select name="akses" id="akses" class="form-control">
+                            <select name="akses" id="akses" class="form-control" required>
                                 <option value="">Pilih</option>
                                 <?php
                                     $Jumlah = mysqli_num_rows(mysqli_query($Conn, "SELECT*FROM access_group"));
@@ -175,11 +203,11 @@
                     <div class="row mb-3">
                         <div class="col-4">
                             <label for="password1">
-                                <small>Password</small>
+                                <small>* Password</small>
                             </label>
                         </div>
                         <div class="col-8">
-                            <input type="password" name="password1" id="password1" class="form-control">
+                            <input type="password" name="password1" id="password1" class="form-control" required>
                             <small class="credit">
                                 <small class="text-grayish">Terdiri dari 6-20 karakter angka dan huruf</small>
                             </small>
@@ -188,11 +216,11 @@
                     <div class="row mb-3">
                         <div class="col-4">
                             <label for="password2">
-                                <small>Ulangi Password</small>
+                                <small>* Ulangi Password</small>
                             </label>
                         </div>
                         <div class="col-8">
-                            <input type="password" name="password2" id="password2" class="form-control">
+                            <input type="password" name="password2" id="password2" class="form-control" required>
                             <small class="credit">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="Tampilkan" id="TampilkanPassword" name="TampilkanPassword">
@@ -266,7 +294,7 @@
     </div>
 </div>
 <div class="modal fade" id="ModalEditAkses" tabindex="-1">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesEditAkses">
                 <div class="modal-header">
@@ -485,6 +513,56 @@
                     </button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalCariIhs" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content border border-1 border-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark">
+                    <i class="bi bi-search"></i> Pencarian IHS Practitioner
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="FormCariIhs">
+                        <!-- Form Cari Practitioner -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalCariIhs2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md">
+        <div class="modal-content border border-1 border-dark">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark">
+                    <i class="bi bi-search"></i> Pencarian IHS Practitioner (Edit)
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="FormCariIhs2">
+                        <!-- Form Cari Practitioner -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                    <i class="bi bi-x-circle"></i> Tutup
+                </button>
+            </div>
         </div>
     </div>
 </div>

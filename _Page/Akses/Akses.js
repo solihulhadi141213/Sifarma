@@ -104,6 +104,9 @@ $(document).ready(function() {
             data        : {id_access: id_access},
             success     : function(data){
                 $('#FormEditAkses').html(data);
+
+                
+
             }
         });
     });
@@ -334,4 +337,79 @@ $(document).ready(function() {
         });
     });
 
+
+    // Modal Pencarian IHS Practitioner
+    $(document).on('click', '#modal_cari_ihs', function () {
+
+        // Tangkap 'nik'
+        var nik = $('#access_nik').val();
+
+        // Tampilkan modal 'ModalCariIhs'
+        $('#ModalCariIhs').modal('show');
+
+        // Loading Form
+        $('#FormCariIhs').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/Akses/FormCariIhs.php',
+            data        : {nik: nik},
+            success     : function(data){
+                $('#FormCariIhs').html(data);
+                
+                // Re-init tooltip
+                $('[data-bs-toggle="tooltip"]').tooltip();
+            }
+        });
+    });
+
+    // Ketika Click 'get_id_practitioner'
+    $(document).on('click', '.get_id_practitioner', function () {
+        var id_ihs = $(this).data('id');
+
+        // Tempelkan
+        $('#access_ihs').val(id_ihs);
+
+        // Tutup  modal 'ModalCariIhs'
+        $('#ModalCariIhs').modal('hide');
+    });
+
+    // Modal Pencarian IHS Practitioner2
+    $(document).on('click', '#modal_cari_ihs2', function () {
+
+        // Tangkap 'nik'
+        var nik = $('#access_nik_edit').val();
+
+        // Tampilkan modal 'ModalCariIhs'
+        $('#ModalCariIhs2').modal('show');
+
+        // Loading Form
+        $('#FormCariIhs2').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/Akses/FormCariIhs2.php',
+            data        : {nik: nik},
+            success     : function(data){
+                $('#FormCariIhs2').html(data);
+                
+                // Re-init tooltip
+                $('[data-bs-toggle="tooltip"]').tooltip();
+            }
+        });
+    });
+
+    // Ketika Click 'get_id_practitioner'
+    $(document).on('click', '.get_id_practitioner2', function () {
+        var id_ihs = $(this).data('id');
+
+        // Tempelkan
+        $('#access_ihs_edit').val(id_ihs);
+
+        // Tutup  modal 'ModalCariIhs2'
+        $('#ModalCariIhs2').modal('hide');
+    });
+    
 });
