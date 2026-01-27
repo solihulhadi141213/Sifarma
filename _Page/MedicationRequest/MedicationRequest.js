@@ -200,6 +200,120 @@ function ShowTableObat() {
     });
 }
 
+// Fungsi kontrol ingredient berdasarkan racikan_code
+function kontrolIngredient() {
+    var racikan = $('#racikan_code').val();
+
+    if (racikan === 'NC') {
+        // Disable tombol tambah ingredient
+        $('#modal_tambah_ingridient')
+            .prop('disabled', true)
+            .removeClass('btn-primary')
+            .addClass('btn-secondary');
+
+        // Kosongkan tabel ingredient
+        $('#table_list_ingridient').html(`
+            <tr>
+                <td colspan="6" class="text-center">
+                    <small>Konten Belum Ada</small>
+                </td>
+            </tr>
+        `);
+    } else {
+        // Enable tombol tambah ingredient
+        $('#modal_tambah_ingridient')
+            .prop('disabled', false)
+            .removeClass('btn-secondary')
+            .addClass('btn-primary');
+    }
+}
+
+function initSelect2KfaIngridient() {
+    var medication_category = 'Obat';
+    $('#ingridient_kfa').select2({
+        theme             : 'bootstrap-5',
+        dropdownParent    : $('#ModalTambahIngridient'),
+        placeholder       : 'Cari Zat/Kandungan...',
+        allowClear        : true,
+        minimumInputLength: 3,
+        ajax              : {
+            url     : '_Page/Medication/ListKfa.php',
+            dataType: 'json',
+            delay   : 300,
+            data    : function (params) {
+                return {
+                    keyword            : params.term,
+                    medication_category: medication_category,
+                    page               : params.page || 1
+                };
+            },
+            processResults: function (data, params) {
+                params.page = params.page || 1;
+
+                return {
+                    results   : data.results,
+                    pagination: {
+                        more: data.pagination.more
+                    }
+                };
+            },
+            cache: true
+        }
+    });
+}
+
+function initSelect2SatuanNumerator() {
+    $('#satuan_numerator').select2({
+        theme             : 'bootstrap-5',
+        dropdownParent    : $('#ModalTambahIngridient'),
+        placeholder       : 'Satuan Numerator...',
+        allowClear        : true,
+        minimumInputLength: 1,
+        ajax              : {
+            url     : '_Page/Medication/ListNumerator.php',
+            dataType: 'json',
+            delay   : 300,
+            data    : function (params) {
+                return {
+                    keyword: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.results
+                };
+            },
+            cache: true
+        }
+    });
+}
+
+function initSelect2SatuanDenominator() {
+    $('#satuan_denominator').select2({
+        theme             : 'bootstrap-5',
+        dropdownParent    : $('#ModalTambahIngridient'),
+        placeholder       : 'Satuan Denominator...',
+        allowClear        : true,
+        minimumInputLength: 3,
+        ajax              : {
+            url     : '_Page/Medication/ListDenominator.php',
+            dataType: 'json',
+            delay   : 300,
+            data    : function (params) {
+                return {
+                    keyword: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.results
+                };
+            },
+            cache: true
+        }
+    });
+}
+
 // ===================================================================================================
 // INI ADALAH BATAS SUCI ANTARA FUNCION DAN SCRIPT LAINNYA
 // ===================================================================================================
@@ -875,9 +989,344 @@ $(document).ready(function() {
             data        : {id_medication_request_group: id_medication_request_group, id: id},
             success     : function(data){
                 $('#FormTambahItem').html(data);
+
+                // SELECT2 
+                $('.select_satuan').select2({
+                    theme             : 'bootstrap-5',
+                    placeholder       : 'Pilih Satuan',
+                    tags              : false,
+                    width             : '100%',
+                    minimumInputLength: 1,
+                    dropdownParent    : $('#FormTambahItem'),
+                    ajax: {
+                        url     : '_Page/MedicationRequest/OptionSatuan.php',
+                        dataType: 'json',
+                        delay   : 300,
+                        data    : function (params) {
+                            return {
+                                q: params.term,
+                                page: params.page || 1
+                            };
+                        },
+                        processResults: function (data, params) {
+                            return {
+                                results: data.results,
+                                pagination: {
+                                    more: data.pagination?.more || false
+                                }
+                            };
+                        },
+                        cache: true
+                    }
+                });
+
+                // Select2 Route
+                $('#route_code').select2({
+                    theme         : 'bootstrap-5',
+                    width         : '100%',
+                    placeholder   : 'Pilih Route',
+                    allowClear    : true,
+                    dropdownParent: $('#FormTambahItem')
+                });
             }
         });
 
+    });
+    // Saat modal dibuka
+    $(document).on('shown.bs.modal', '#ModalTambahItem', function () {
+        kontrolIngredient();
+    });
+
+    // Saat racikan_code diubah
+    $(document).on('change', '#racikan_code', function () {
+        kontrolIngredient();
+    });
+
+    // Modal Tambah Ingridient
+    $(document).on('click', '#modal_tambah_ingridient', function () {
+
+        //tampilkan modal
+        $('#ModalTambahIngridient').modal('show');
+
+        // Kosongkan Notifikasi
+        $('#NotifikasiTambahIngridient').html('');
+
+        //Form Loading
+        $('#FormTambahIngridient').html('Loading...');
+
+        //Tampilkan Form Dengan Ajax
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/Medication/FormTambahIngridient.php',
+            success     : function(data){
+                $('#FormTambahIngridient').html(data);
+
+                // 🔁 Re-inisialisasi tooltip setelah data dimuat
+                $('[data-bs-toggle="tooltip"]').tooltip();
+
+                // Inisialisasi Select2
+                initSelect2KfaIngridient();
+                initSelect2SatuanNumerator();
+                initSelect2SatuanDenominator();
+
+            }
+        });
+    });
+
+    //Proses Tambah Ingridient
+    $('#ProsesTambahIngridient').submit(function(e){
+        e.preventDefault();
+        
+        // Ambil Data Dari form
+        var ProsesTambahIngridient = $(this).serialize();
+
+
+        // Ajax Request
+        $.ajax({
+            type     : 'POST',
+            url      : '_Page/MedicationRequest/ProsesTambahIngridient.php',
+            dataType : 'json',
+            data     : ProsesTambahIngridient,
+
+            success: function(response){
+                // Buat Variabel
+                var status   = response.status;
+                var payload  = response.payload;
+                var message  = response.message || 'Proses berhasil';
+
+                if(status === 'success'){
+
+                    // Hapus row "Konten Belum Ada" jika ada
+                    if($('#table_list_ingridient tr td').length === 1){
+                        $('#table_list_ingridient').empty();
+                    }
+
+                    // Hitung nomor baris
+                    var no = $('#table_list_ingridient tr').length + 1;
+
+                    // Format numerator
+                    var numerator = '';
+                    if(payload.jumlah_numerator !== ''){
+                        numerator = payload.jumlah_numerator + ' ' + payload.nama_numerator;
+                    }
+
+                    // Format denominator
+                    var denominator = '';
+                    if(payload.jumlah_denominator !== ''){
+                        denominator = payload.jumlah_denominator + ' ' + payload.nama_denominator;
+                    }
+
+                    // Buat row
+                    var content_row = `
+                        <tr>
+                            <td class="text-center"><small>${no}</small></td>
+                            <td><small>${payload.kode_kfa}</small></td>
+                            <td><small>${payload.nama_kfa}</small></td>
+                            <td class="text-center"><small>${numerator}</small></td>
+                            <td class="text-center"><small>${denominator}</small></td>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-danger btn-sm btn-hapus-ingridient" title="Hapus Ingridient">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                                <input type="hidden" name="payload_ingridient[]" value='${JSON.stringify(payload)}'>
+                            </td>
+                        </tr>
+                    `;
+
+                    // Append ke tabel
+                    $('#table_list_ingridient').append(content_row);
+
+                    // Reset form
+                    $('#ProsesTambahIngridient')[0].reset();
+
+                    // Optional: reset Select2
+                    $('#ingridient_kfa, #satuan_numerator, #satuan_denominator').val(null).trigger('change');
+
+                    // tutup modal
+                    $('#ModalTambahIngridient').modal('hide');
+
+                } else {
+
+                    $('#NotifikasiTambahIngridient').html(
+                        '<div class="alert alert-danger"><small>'+message+'</small></div>'
+                    );
+
+                }
+            },
+
+            error: function(xhr){
+                console.log(xhr.responseText);
+
+                $('#NotifikasiTambahIngridient').html(
+                    '<div class="alert alert-danger"><small>Terjadi kesalahan sistem</small></div>'
+                );
+            }
+        });
+    });
+
+    // Hapus Ingrident List
+    $(document).on('click', '.btn-hapus-ingridient', function(){
+        $(this).closest('tr').remove();
+
+        // Update ulang nomor
+        $('#table_list_ingridient tr').each(function(index){
+            $(this).find('td:first small').text(index + 1);
+        });
+
+        // Jika kosong, tampilkan placeholder
+        if($('#table_list_ingridient tr').length === 0){
+            $('#table_list_ingridient').html(`
+                <tr>
+                    <td colspan="6" class="text-center">
+                        <small>Konten Belum Ada</small>
+                    </td>
+                </tr>
+            `);
+        }
+    });
+
+    // Proses Tambah Item Resep
+    $('#ProsesTambahItem').submit(function(e){
+        e.preventDefault(); // WAJIB agar tidak submit normal
+
+        var ProsesTambahItem = $('#ProsesTambahItem').serialize();
+
+        $.ajax({
+            type    : 'POST',
+            url     : '_Page/MedicationRequest/ProsesTambahItem.php',
+            dataType: 'json',
+            data    : ProsesTambahItem,
+
+            // 🔒 KUNCI TOMBOL SAAT REQUEST DIMULAI
+            beforeSend: function(){
+                $('#NotifikasiTambahItem').html('Mengirim data...');
+            },
+
+            // ✅ RESPONSE BERHASIL DITERIMA (HTTP 200)
+            success: function(response){
+                var status                      = response.status;
+                var message                     = response.message;
+
+                if(status === 'success'){
+                   
+                    // Tutup Modal
+                    $('#NotifikasiTambahItem').html('');
+                    $('#ModalTambahItem').modal('hide');
+                    $('#ModalItemObat').modal('hide');
+
+                    // Tampilkan Data
+                    ShowDetailResep();
+
+                    // Toast Proses Berhasil
+                    $('#put_message').html('<i class="bi bi-check-circle me-2"></i> ' + message);
+
+                    // Tampilkan Toast
+                    var toastEl = document.getElementById('toast_proses');
+                    var toast   = new bootstrap.Toast(toastEl, {delay: 3000});
+                    toast.show();
+
+                }else{
+                    $('#NotifikasiTambahItem').html(
+                        '<div class="alert alert-danger"><small>'+message+'</small></div>'
+                    );
+                }
+            },
+
+            // ❌ ERROR TEKNIS (NETWORK / 500 / TIMEOUT)
+            error: function(xhr){
+                $('#NotifikasiTambahResep').html(
+                    '<div class="alert alert-danger">' +
+                    '<small>Koneksi ke Server Gagal</small>' +
+                    '</div>'
+                );
+            },
+        });
+    });
+
+    // ==========================================================
+    // MODAL TAMBAH MEDICATION REQUEST
+    // ==========================================================
+    $(document).on('click', '.modal_tambah_medication_request', function () {
+
+        // Tangkap 'kode_medication_request'
+        var kode_medication_request = $(this).data('id');
+
+        // Tampilkan modal 'ModalKirimMedicationRequest'
+        $('#ModalKirimMedicationRequest').modal('show');
+
+        // Kosongkan Notifikasi
+        $('#NotifikasiKirimMedicationRequest').html('');
+
+        // Loading Form
+        $('#FormKirimMedicationRequest').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/MedicationRequest/FormKirimMedicationRequest.php',
+            data        : {kode_medication_request: kode_medication_request},
+            success     : function(data){
+                $('#FormKirimMedicationRequest').html(data);
+            }
+        });
+
+    });
+
+    // Proses Kirim Resource Medication Request
+    $('#ProsesKirimMedicationRequest').submit(function(e){
+        e.preventDefault(); // WAJIB agar tidak submit normal
+
+        var ProsesKirimMedicationRequest = $('#ProsesKirimMedicationRequest').serialize();
+
+        $.ajax({
+            type    : 'POST',
+            url     : '_Page/MedicationRequest/ProsesKirimMedicationRequest.php',
+            dataType: 'json',
+            data    : ProsesKirimMedicationRequest,
+
+            // 🔒 KUNCI TOMBOL SAAT REQUEST DIMULAI
+            beforeSend: function(){
+                $('#NotifikasiKirimMedicationRequest').html('Mengirim data...');
+            },
+
+            // ✅ RESPONSE BERHASIL DITERIMA (HTTP 200)
+            success: function(response){
+                var status                      = response.status;
+                var message                     = response.message;
+
+                if(status === 'success'){
+                   
+                    // Tutup Modal
+                    $('#NotifikasiKirimMedicationRequest').html('');
+                    $('#ModalKirimMedicationRequest').modal('hide');
+
+                    // Tampilkan Data
+                    ShowDetailResep();
+
+                    // Toast Proses Berhasil
+                    $('#put_message').html('<i class="bi bi-check-circle me-2"></i> ' + message);
+
+                    // Tampilkan Toast
+                    var toastEl = document.getElementById('toast_proses');
+                    var toast   = new bootstrap.Toast(toastEl, {delay: 3000});
+                    toast.show();
+
+                }else{
+                    $('#NotifikasiKirimMedicationRequest').html(
+                        '<div class="alert alert-danger"><small>'+message+'</small></div>'
+                    );
+                }
+            },
+
+            // ❌ ERROR TEKNIS (NETWORK / 500 / TIMEOUT)
+            error: function(xhr){
+                $('#NotifikasiKirimMedicationRequest').html(
+                    '<div class="alert alert-danger">' +
+                    '<small>Koneksi ke Server Gagal</small>' +
+                    '</div>'
+                );
+            },
+        });
     });
 
 });

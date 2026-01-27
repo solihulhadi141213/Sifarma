@@ -443,23 +443,187 @@
                 </div>
             </div>
             <div class="card-body">
-                <div class="table table-responsive">
-                    <table class="table table-sm table-bordered table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <td class="text-center"><small><b>No</b></small></td>
-                                <td class="text-center"><small><b>Kode</b></small></td>
-                                <td class="text-center"><small><b>Item Obat/Alkes</b></small></td>
-                                <td class="text-center"><small><b>Opsi</b></small></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="text-center" colspan="4">Loading...</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <?php
+                    // Cek Apakah ada List Resep
+                    $jumlah_resep = mysqli_num_rows(mysqli_query($Conn, "SELECT kode_medication_request FROM medication_request WHERE id_medication_request_group='$id_medication_request_group'"));
+                    if(empty($jumlah_resep)){
+                        echo '
+                            <div class="alert alert-danger">
+                                <small>Belum ada item resep yang dibuat!</small>
+                            </div>
+                        ';
+                    }else{
+                        $no_urut = 1;
+                        $query_resep = mysqli_query($Conn, "SELECT*FROM medication_request WHERE id_medication_request_group='$id_medication_request_group' ORDER BY name_medication ASC");
+                        while ($data_resep = mysqli_fetch_array($query_resep)) {
+                            $kode_medication_request = $data_resep['kode_medication_request'];
+                            $id_medication           = $data_resep['id_medication'] ?? '-';
+                            $name_medication         = $data_resep['name_medication'];
+                            $intent                  = $data_resep['intent'];
+                            $racikan_code            = $data_resep['racikan_code'];
+                            $racikan_display         = $data_resep['racikan_display'];
+                            $dosage_inst_text        = $data_resep['dosage_inst_text'];
+                            $dosage_inst_frequency   = $data_resep['dosage_inst_frequency'];
+                            $dosage_inst_period      = $data_resep['dosage_inst_period'];
+                            $dosage_inst_period_unit = $data_resep['dosage_inst_period_unit'];
+                            $dose_value              = $data_resep['dose_value'];
+                            $dose_unit               = $data_resep['dose_unit'];
+                            $dose_code               = $data_resep['dose_code'];
+                            $dispense_value          = $data_resep['dispense_value'];
+                            $dispense_unit           = $data_resep['dispense_unit'];
+                            $supply_duration_value   = $data_resep['supply_duration_value'];
+                            $supply_duration_unit    = $data_resep['supply_duration_unit'];
+                            $ingredient              = $data_resep['ingredient'];
+
+                            // Routing id_medication
+                            if(empty($data_resep['id_medication'])){
+                                $id_medication = "";
+                                $label_id_medication = '
+                                    <a href="javascript:void(0);" class="text-danger modal_tambah_medication" data-id="'.$kode_medication_request.'">
+                                        <i class="bi bi-plus"></i> Generate ID Medication
+                                    </a> 
+                                ';
+                            }else{
+                                $id_medication = $data_resep['id_medication'];
+                                $label_id_medication = '
+                                    <a href="javascript:void(0);" class="text-info modal_detail_medication" data-id="'.$id_medication.'">
+                                        Tersedia - Lihat Detail <i class="bx bx-windows"></i>
+                                    </a> 
+                                ';
+                            }
+
+                            // Routing id_medication_request
+                            if(empty($data_resep['id_medication_request'])){
+                                $id_medication_request = "";
+                                $label_medication_request = '
+                                     <a href="javascript:void(0);" class="text-danger modal_tambah_medication_request" data-id="'.$kode_medication_request.'">
+                                        <i class="bi bi-plus"></i> Kirim Medication Request
+                                    </a> 
+                                ';
+                            }else{
+                                $id_medication_request = $data_resep['id_medication_request'];
+                                $label_medication_request = '
+                                    <a href="javascript:void(0);" class="text-info modal_detail_medication_request" data-id="'.$id_medication_request.'">
+                                        Tersedia - Lihat Detail <i class="bx bx-windows"></i>
+                                    </a> 
+                                ';
+                            }
+
+
+                            echo '
+                                <div class="row mb-2 border-1 border-bottom">
+                                    <div class="col-10 mb-2">
+                                        <small>
+                                            <a href="javascript:void(0);" class="modal_detail_item_resep" data-id="'.$kode_medication_request.'">
+                                                <b>'.$no_urut.'. '.$name_medication.'</b>
+                                            </a>
+                                        </small>
+                                    </div>
+                                    <div class="col-2 mb-2 text-end">
+                                        <button type="button" class="btn btn-sm btn-secondary btn-floating" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow shadow-2-strong border border-2 border-secondary shadow-3-strong" style="">
+                                            <li class="dropdown-header text-start">
+                                                <h6>Option</h6>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item modal_detail_item_resep" href="javascript:void(0)" data-id="'.$kode_medication_request .'">
+                                                    <i class="bi bi-info-circle"></i> Detail
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item modal_edit_item_resep" href="javascript:void(0)" data-id="'.$kode_medication_request .'">
+                                                    <i class="bi bi-pencil"></i> Edit
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="dropdown-item modal_hapus_item_resep" href="javascript:void(0)" data-id="'.$kode_medication_request .'">
+                                                    <i class="bi bi-x"></i> Hapus
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small><i>ID Medication</i></small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        <small>'.$label_id_medication.'</small>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small><i>ID Medication Request</i></small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        <small>'.$label_medication_request.'</small>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small>Tipe Resep</small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        <small class="text text-grayish">('.$racikan_code.') '.$racikan_display.'</small>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small>Dosis</small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        <small class="text text-grayish">'.$dosage_inst_frequency.' * '.$dose_value.' '.$dose_unit.'</small>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small>Jumlah Total</small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        <small class="text text-grayish">'.$dispense_value.' '.$dispense_unit.' | '.$supply_duration_value.' '.$supply_duration_unit.'</small>
+                                    </div>
+                                </div>
+                            ';
+                            // Apabila racikan
+                            if($racikan_code=="NC"){
+                                echo '
+                                    <div class="row mb-4">
+                                        <div class="col-4 mb-2"><small>Instruksi</small></div>
+                                        <div class="col-1 mb-2"><small>:</small></div>
+                                        <div class="col-7 mb-2">
+                                            <small class="text text-grayish">'.$dosage_inst_text.'</small>
+                                        </div>
+                                    </div> 
+                                ';
+                            }else{
+                                if(empty($ingredient)){
+                                    $ingredient_data = 0;
+                                }else{
+                                    $ingredient_arry = json_decode($ingredient, true);
+                                    $ingredient_data = count($ingredient_arry);
+                                }
+                                echo '
+                                    <div class="row mb-2">
+                                        <div class="col-4"><small>Instruksi</small></div>
+                                        <div class="col-1"><small>:</small></div>
+                                        <div class="col-7">
+                                            <small class="text text-grayish">'.$dosage_inst_text.'</small>
+                                        </div>
+                                    </div> 
+                                ';
+                                echo '
+                                    <div class="row mb-4">
+                                        <div class="col-4 mb-2"><small>Ingredient</small></div>
+                                        <div class="col-1 mb-2"><small>:</small></div>
+                                        <div class="col-7 mb-2">
+                                            <a href="javascript:void(0);" class="text-warning modal_detail_ingredient">
+                                                <small>('.$ingredient_data.' Item) <i class="bx bx-windows"></i></small>
+                                            </a>
+                                        </div>
+                                    </div>
+                                ';
+                            }
+                            $no_urut++;
+                        }
+                    }
+                ?>
             </div>
         </div>
     </div>

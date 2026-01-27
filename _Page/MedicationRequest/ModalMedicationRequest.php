@@ -405,7 +405,7 @@
 <!-- MODAL TAMBAH ITEM OBAT RESEP -->
 <div class="modal fade" id="ModalTambahItem" tabindex="-1">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content border border-2 border-dark">
             <form action="javascript:void(0);" id="ProsesTambahItem" autocomplete="off">
                 <div class="modal-header">
                     <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Item Obat</h5>
@@ -426,6 +426,72 @@
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-rounded" id="button_tambah_item">
                         <i class="bi bi-check"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalTambahIngridient" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border border-2 border-primary-subtle rounded-4 shadow-lg">
+            <form action="javascript:void(0);" id="ProsesTambahIngridient" autocomplete="off">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Ingridient</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="row">
+                        <div class="col-md-12" id="FormTambahIngridient">
+                            <!-- Form Tambah -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiTambahIngridient">
+                            <!-- Notifikasi Proses -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="submit" class="btn btn-primary btn-rounded">
+                        <i class="bi bi-plus"></i> Tambahkan
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalKirimMedicationRequest" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border border-2 border-primary-subtle rounded-4 shadow-lg">
+            <form action="javascript:void(0);" id="ProsesKirimMedicationRequest" autocomplete="off">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-dark"><i class="bi bi-send"></i> Kirim <i>Medication Request</i></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="row">
+                        <div class="col-md-12" id="FormKirimMedicationRequest">
+                            <!-- Form Tambah -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiKirimMedicationRequest">
+                            <!-- Notifikasi Proses -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="submit" class="btn btn-primary btn-rounded">
+                        <i class="bi bi-send"></i> Kirim Resource
                     </button>
                     <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
                         <i class="bi bi-x"></i> Tutup

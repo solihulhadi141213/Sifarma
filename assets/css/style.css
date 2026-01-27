@@ -1627,10 +1627,13 @@ body .title_page_app {
 
 /* Berikut ini adalah style untuk underscore */
 .underscore_doted {
-    border-bottom: 1px dashed  #000; /* garis bawah putus-putus hitam */
-    display: inline-block;          /* agar border mengikuti panjang teks */
-    line-height: 1.2;               /* tinggi baris agar rapi */
-    padding-bottom: 1px;            /* jarak kecil antara teks dan garis */
+    background-image: linear-gradient(to right, #000 75%, transparent 75%);
+    background-position: left bottom;
+    background-repeat: repeat-x;
+    background-size: 4px 1px;
+    display: inline;
+    padding-bottom: 3px;
+    line-height: 1.5;
 }
 
 /* Untuk text pandajang dan tombol copy */
