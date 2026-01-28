@@ -19,6 +19,7 @@
             "SatuanDenominator" => "_Page/SatuanDenominator/SatuanDenominator.php",
             "SatuanDosis"       => "_Page/SatuanDosis/SatuanDosis.php",
             "Route"             => "_Page/Route/Route.php",
+            "Question"          => "_Page/Question/Question.php",
             "Medication"        => "_Page/Medication/Medication.php",
             "MedicationRequest" => "_Page/MedicationRequest/MedicationRequest.php",
             "Aktivitas"         => "_Page/Aktivitas/Aktivitas.php",
