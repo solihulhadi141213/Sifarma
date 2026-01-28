@@ -78,25 +78,44 @@
             <div class="mt-3">Referensi</div>
         </li>
         <li class="nav-item">
-            <a class="nav-link <?php if($PageMenu=="Sediaan"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=Sediaan">
-                <i class="bi bi-box"></i> <span>Sediaan</span>
+            <a class="nav-link <?php if($PageMenu=="Sediaan"||$PageMenu=="SatuanDosis"||$PageMenu=="SatuanNumerator"||$PageMenu=="SatuanDenominator"||$PageMenu=="Route"||$PageMenu=="Question"){echo "";}else{echo "collapsed";} ?>" data-bs-target="#components4-nav" data-bs-toggle="collapse" href="javascript:void(0);">
+                <i class="bi bi-table"></i> 
+                <span>Referensi</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="components4-nav" class="nav-content collapse <?php if($PageMenu=="Sediaan"||$PageMenu=="SatuanDosis"||$PageMenu=="SatuanNumerator"||$PageMenu=="SatuanDenominator"||$PageMenu=="Route"||$PageMenu=="Question"){echo "show";} ?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="index.php?Page=Sediaan" class="<?php if($PageMenu=="Sediaan"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Sediaan</span>
+                    </a>
+                </li> 
+                <li>
+                    <a href="index.php?Page=SatuanDosis" class="<?php if($PageMenu=="SatuanDosis"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Satuan Dosis</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?Page=SatuanNumerator" class="<?php if($PageMenu=="SatuanNumerator"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Satuan (Numerator)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?Page=SatuanDenominator" class="<?php if($PageMenu=="SatuanDenominator"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Satuan (Denominator)</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?Page=Route" class="<?php if($PageMenu=="Route"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Route Obat/Alkes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.php?Page=Question" class="<?php if($PageMenu=="Question"){echo "active";} ?>">
+                        <i class="bi bi-circle"></i><span>Daftar Pertanyaan</span>
+                    </a>
+                </li>
+            </ul>
         </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if($PageMenu=="SatuanDosis"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=SatuanDosis">
-                <i class="bi bi-tag"></i> <span>Satuan Dosis</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if($PageMenu=="SatuanNumerator"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=SatuanNumerator">
-                <i class="bi bi-box-arrow-down-right"></i> <span>Satuan (Numerator)</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link <?php if($PageMenu=="SatuanDenominator"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=SatuanDenominator">
-                <i class="bi bi-box-arrow-up-right"></i> <span>Satuan (Denominator)</span>
-            </a>
-        </li>
+        
         <li class="nav-heading border-1 border-top">
             <div class="mt-3">Master</div>
         </li>
