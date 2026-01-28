@@ -509,6 +509,36 @@
                                 ';
                             }
 
+                            // Cek Apakah Sudah Punya Data ID Medication Dispense
+                            $kode_medication_dispense = GetDetailData($Conn, 'medication_dispense', 'kode_medication_request', $kode_medication_request, 'kode_medication_dispense');
+                            $id_medication_dispense   = GetDetailData($Conn, 'medication_dispense', 'kode_medication_request', $kode_medication_request, 'id_medication_dispense');
+                            if(empty($kode_medication_dispense)&&empty($id_medication_dispense)){
+                                $label_medication_dispense = '
+                                    <a href="javascript:void(0);" class="text-danger modal_creat_medication_dispense" data-id="'.$kode_medication_request.'">
+                                        <small>
+                                            <i class="bi bi-plus"></i> Penyerahan Obat
+                                        </small>
+                                    </a>
+                                ';
+                            }else{
+                                if(empty($id_medication_dispense)){
+                                    $label_medication_dispense = '
+                                        <a href="javascript:void(0);" class="text-warning modal_send_medication_dispense" data-id="'.$kode_medication_dispense.'">
+                                            <small>
+                                                <i class="bi bi-plus"></i> Kirim Resource
+                                            </small>
+                                        </a>
+                                    ';
+                                }else{
+                                    $label_medication_dispense = '
+                                        <a href="javascript:void(0);" class="text-info modal_detail_medication_dispense " data-id="'.$id_medication_dispense.'">
+                                            <small>
+                                                Tersedia - Lihat Detail <i class="bx bx-windows"></i>
+                                            </small>
+                                        </a>
+                                    ';
+                                }
+                            }
 
                             echo '
                                 <div class="row mb-2 border-1 border-bottom">
@@ -553,10 +583,17 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <div class="col-4"><small><i>ID Medication Request</i></small></div>
+                                    <div class="col-4"><small><i>Medication Request</i></small></div>
                                     <div class="col-1"><small>:</small></div>
                                     <div class="col-7">
                                         <small>'.$label_medication_request.'</small>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small><i>Medication Dispense</i></small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        '.$label_medication_dispense.'
                                     </div>
                                 </div>
                                 <div class="row mb-2">

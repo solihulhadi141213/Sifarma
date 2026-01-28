@@ -135,8 +135,24 @@
                 $priority_name = $priority_list[$priority] ?? '-';
                 
                 // Jumlah Item Resep
-                $jumlah_item_resep = "3";
+                $jumlah_item_resep = mysqli_num_rows(mysqli_query($Conn, "SELECT id_medication_request FROM medication_request WHERE id_medication_request_group='$id_medication_request_group '"));
+                $jumlah_penyerahan = mysqli_num_rows(mysqli_query($Conn, "SELECT kode_medication_dispense FROM medication_dispense WHERE id_medication_request_group='$id_medication_request_group '"));
                 
+                // Routing Label Penyerahan Peresepan
+                if(empty($jumlah_item_resep)){
+                    $label_peresepan ='<label class="badge badge-danger">'.$jumlah_item_resep.' / '.$jumlah_penyerahan.'</label>';
+                }else{
+                    if(empty($jumlah_penyerahan)){
+                        $label_peresepan ='<label class="badge badge-warning">'.$jumlah_item_resep.' / '.$jumlah_penyerahan.'</label>';
+                    }else{
+                        if($jumlah_penyerahan!==$jumlah_item_resep){
+                            $label_peresepan ='<label class="badge badge-info">'.$jumlah_item_resep.' / '.$jumlah_penyerahan.'</label>';
+                        }else{
+                            $label_peresepan ='<label class="badge badge-success">'.$jumlah_item_resep.' / '.$jumlah_penyerahan.'</label>';
+                        }
+                    }
+                }
+
                 // Tampilkan Data
                 echo '
                     <tr>
@@ -151,7 +167,7 @@
                         <td><small>'.$kunjungan_tujuan.'</small></td>
                         <td><small>'.$kunjungan_pembayaran.'</small></td>
                         <td><small>'.$dokter_nama.'</small></td>
-                        <td><small>'.$jumlah_item_resep.'</small></td>
+                        <td><small>'.$label_peresepan.'</small></td>
                         <td><small>'.$priority_name.'</small></td>
                         <td><small>'.$label_status.'</small></td>
                         <td>

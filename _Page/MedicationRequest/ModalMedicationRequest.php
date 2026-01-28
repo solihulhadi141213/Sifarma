@@ -501,3 +501,37 @@
         </div>
     </div>
 </div>
+
+<!-- MODAL PENYERAHAN OBAT -->
+<div class="modal fade" id="ModalCreatMedicationDispense" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content border border-2 border-primary-subtle rounded-4 shadow-lg">
+            <form action="javascript:void(0);" id="ProsesCreatMedicationDispense" autocomplete="off">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title text-dark"><i class="bi bi-send"></i> Penyerahan Obat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-light">
+                    <div class="row">
+                        <div class="col-md-12" id="FormCreatMedicationDispense">
+                            <!-- Form Tambah -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiCreatMedicationDispense">
+                            <!-- Notifikasi Proses -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="submit" class="btn btn-primary btn-rounded">
+                        <i class="bi bi-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

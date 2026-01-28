@@ -28,7 +28,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-header text-center">
                     <b class="card-title">
@@ -52,6 +52,16 @@
                                 <div class="col-5 mb-2"><small class="credit">Nomor Kontak</small></div>
                                 <div class="col-1 mb-2"><small class="credit">:</small></div>
                                 <div class="col-6 mb-2"><small class="text-grayish"><?php echo "$access_contact"; ?></small></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 mb-2"><small class="credit">NIK / KTP</small></div>
+                                <div class="col-1 mb-2"><small class="credit">:</small></div>
+                                <div class="col-6 mb-2"><small class="text-grayish"><?php echo "$access_nik"; ?></small></div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-5 mb-2"><small class="credit">ID IHS</small></div>
+                                <div class="col-1 mb-2"><small class="credit">:</small></div>
+                                <div class="col-6 mb-2"><small class="text-grayish"><?php echo "$access_ihs"; ?></small></div>
                             </div>
                             <div class="row mb-2">
                                 <div class="col-5 mb-2"><small class="credit">Alamat Email</small></div>
@@ -81,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-8">
             <div class="card">
                 <div class="card-header text-center">
                     <b class="card-title"><i class="bi bi-app"></i> Izin Pengguna</b>

@@ -1329,6 +1329,91 @@ $(document).ready(function() {
         });
     });
 
+    // ==========================================================
+    // MODAL CREAT MEDICATION DISPENSE
+    // ==========================================================
+    $(document).on('click', '.modal_creat_medication_dispense', function () {
+
+        // Tangkap 'kode_medication_request'
+        var kode_medication_request = $(this).data('id');
+
+        // Tampilkan modal 'ModalCreatMedicationDispense'
+        $('#ModalCreatMedicationDispense').modal('show');
+
+        // Kosongkan Notifikasi
+        $('#NotifikasiCreatMedicationDispense').html('');
+
+        // Loading Form
+        $('#FormCreatMedicationDispense').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/MedicationRequest/FormCreatMedicationDispense.php',
+            data        : {kode_medication_request: kode_medication_request},
+            success     : function(data){
+                $('#FormCreatMedicationDispense').html(data);
+            }
+        });
+
+    });
+
+    $('#ProsesCreatMedicationDispense').submit(function(e){
+        e.preventDefault(); // WAJIB agar tidak submit normal
+
+        var ProsesCreatMedicationDispense = $('#ProsesCreatMedicationDispense').serialize();
+
+        $.ajax({
+            type    : 'POST',
+            url     : '_Page/MedicationRequest/ProsesCreatMedicationDispense.php',
+            dataType: 'json',
+            data    : ProsesCreatMedicationDispense,
+
+            // 🔒 KUNCI TOMBOL SAAT REQUEST DIMULAI
+            beforeSend: function(){
+                $('#NotifikasiCreatMedicationDispense').html('Mengirim data...');
+            },
+
+            // ✅ RESPONSE BERHASIL DITERIMA (HTTP 200)
+            success: function(response){
+                var status                      = response.status;
+                var message                     = response.message;
+
+                if(status === 'success'){
+                   
+                    // Tutup Modal
+                    $('#NotifikasiCreatMedicationDispense').html('');
+                    $('#ModalCreatMedicationDispense').modal('hide');
+
+                    // Tampilkan Data
+                    ShowDetailResep();
+
+                    // Toast Proses Berhasil
+                    $('#put_message').html('<i class="bi bi-check-circle me-2"></i> ' + message);
+
+                    // Tampilkan Toast
+                    var toastEl = document.getElementById('toast_proses');
+                    var toast   = new bootstrap.Toast(toastEl, {delay: 3000});
+                    toast.show();
+
+                }else{
+                    $('#NotifikasiCreatMedicationDispense').html(
+                        '<div class="alert alert-danger"><small>'+message+'</small></div>'
+                    );
+                }
+            },
+
+            // ❌ ERROR TEKNIS (NETWORK / 500 / TIMEOUT)
+            error: function(xhr){
+                $('#NotifikasiCreatMedicationDispense').html(
+                    '<div class="alert alert-danger">' +
+                    '<small>Koneksi ke Server Gagal</small>' +
+                    '</div>'
+                );
+            },
+        });
+    });
+
 });
 
 
