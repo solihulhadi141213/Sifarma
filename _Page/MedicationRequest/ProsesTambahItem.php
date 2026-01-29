@@ -92,7 +92,7 @@
 
     // Apabila 'id_medication'
     if(empty($_POST['id_medication'])){
-        $id_medication ="";
+        $id_medication =NULL;
     }else{
         $id_medication = validateAndSanitizeInput($_POST['id_medication']);
     }

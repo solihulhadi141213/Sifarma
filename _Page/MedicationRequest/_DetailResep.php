@@ -74,7 +74,8 @@
     $reason_code          = tampil($Data['reason_code'] ?? null);
     $reason_display       = tampil($Data['reason_display'] ?? null);
     $reason_system        = tampil($Data['reason_system'] ?? null);
-    $apoteker             = tampil($Data['apoteker'] ?? null);
+    $apoteker_nama        = tampil($Data['apoteker_nama'] ?? null);
+    $apoteker_id_ihs      = tampil($Data['apoteker_id_ihs'] ?? null);
     $sumber_data          = tampil($Data['sumber_data'] ?? null);
     $status_resep         = tampil($Data['status_resep'] ?? null);
 
@@ -390,9 +391,14 @@
                             </div>
                         </div>
                         <div class="row mb-2">
-                            <div class="col-4"><small>Apoteker</small></div>
+                            <div class="col-4"><small>Nama Apoteker</small></div>
                             <div class="col-1"><small>:</small></div>
-                            <div class="col-7"><small class="text text-grayish">'.$apoteker.'</small></div>
+                            <div class="col-7"><small class="text text-grayish">'.$apoteker_nama.'</small></div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-4"><small>IHS Apoteker</small></div>
+                            <div class="col-1"><small>:</small></div>
+                            <div class="col-7"><small class="text text-grayish">'.$apoteker_id_ihs.'</small></div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-4"><small>Sumber Data</small></div>
@@ -405,6 +411,24 @@
                             <div class="col-7"><small class="text text-grayish">'.$label_status.'</small></div>
                         </div>
                     ';
+
+                    // Routing Task
+                    if($status_resep=="Draft"){
+                        echo '
+                            <div class="row mb-2 mt-3">
+                                <div class="col-12">
+                                    <div class="alert alert-warning text-center">
+                                        <small>
+                                            <b>PENTING !!</b> Lembar resep memerlukan verifikasi dari apoteker yang bertugas.<br>
+                                        </small>
+                                        <a href="javascript:void(0);" class="text-primary modal_verifikasi_resep" data-id="'.$id_medication_request_group.'">
+                                            Verifikasi Resep
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        ';
+                    }
                 ?>
             </div>
         </div>
@@ -418,7 +442,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-8">
-                        <b class="card-title">E. Item Obat</b>
+                        <b class="card-title">E. Item Resep</b>
                     </div>
                     <div class="col-4 text-end">
                         <button type="button" class="btn btn-sm btn-primary btn-floating" data-bs-toggle="dropdown" aria-expanded="false">
