@@ -1,6 +1,6 @@
 <!-- 
 ==========================================================================================
-TAMBAH ROUTE
+TAMBAH PERTANYAAN
 ==========================================================================================
 -->
 <div class="modal fade" id="ModalTambah" tabindex="-1">
@@ -8,7 +8,7 @@ TAMBAH ROUTE
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesTambah" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah Route Obat / Alkes</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-plus"></i> Tambah PERTANYAAN Obat / Alkes</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -132,15 +132,66 @@ TAMBAH ROUTE
 
 <!-- 
 ==========================================================================================
-EDIT ROUTE
+DETAIL PERTANYAAN
+==========================================================================================
+-->
+<div class="modal fade" id="ModalDetail" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark"><i class="bi bi-info-circle"></i> Detail Referensi Pertanyaan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="FormDetail">
+                        <!-- Form Edit -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                    <i class="bi bi-x"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ModalDetailSatuSehat" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark"><i class="bi bi-info-circle"></i> Detail Questionnaire (Satu Sehat)</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="FormDetailSatuSehat">
+                        <!-- Form Edit -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                    <i class="bi bi-x"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+==========================================================================================
+EDIT PERTANYAAN
 ==========================================================================================
 -->
 <div class="modal fade" id="ModalEdit" tabindex="-1">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesEdit" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Route Obat/Alkes</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Referensi Pertanyaan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -168,9 +219,42 @@ EDIT ROUTE
     </div>
 </div>
 
+<div class="modal fade" id="ModalEditKategori" tabindex="-1">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <form action="javascript:void(0);" id="ProsesEditKategori" autocomplete="off">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Edit Kategori Pertanyaan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12" id="FormEditKategori">
+                            <!-- Form Edit -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiEditKategori">
+                            <!-- Notifikasi Edit -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-rounded">
+                        <i class="bi bi-save"></i> Simpan
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- 
 ==========================================================================================
-HAPUS ROUTE
+HAPUS PERTANYAAN
 ==========================================================================================
 -->
 <div class="modal fade" id="ModalHapus" tabindex="-1">
@@ -178,7 +262,7 @@ HAPUS ROUTE
         <div class="modal-content">
             <form action="javascript:void(0);" id="ProsesHapus" autocomplete="off">
                 <div class="modal-header">
-                    <h5 class="modal-title text-dark"><i class="bi bi-trash"></i> Hapus Route Obat/Alkes</h5>
+                    <h5 class="modal-title text-dark"><i class="bi bi-trash"></i> Hapus Pertanyaan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -196,6 +280,44 @@ HAPUS ROUTE
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary btn-rounded">
                         <i class="bi bi-check"></i> Ya, Hapus
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 
+==========================================================================================
+GENERATE ID PERTANYAAN DARI SATU SEHAT
+==========================================================================================
+-->
+<div class="modal fade" id="ModalGenerateSatuSehat" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="javascript:void(0);" id="ProsesGenerateSatuSehat" autocomplete="off">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-pencil"></i> Generate ID Questionnaire</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12" id="FormGenerateSatuSehat">
+                            <!-- Form Edit -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiGenerateSatuSehat">
+                            <!-- Notifikasi Edit -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-rounded">
+                        <i class="bi bi-save"></i> Simpan
                     </button>
                     <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
                         <i class="bi bi-x"></i> Tutup

@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                     <small>
-                        Halaman ini digunakan untuk mengelola daftar pertanyaan dalam pengkajian resep.
+                        Halaman ini digunakan untuk mengelola daftar pertanyaan dalam pengkajian resep yang ditujukan kepada apoteker.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </small>
                 </div>
@@ -50,8 +50,7 @@
                                 <thead>
                                     <tr>
                                         <td align="center"><b>No</b></td>
-                                        <td><b>Kategori</b></td>
-                                        <td><b>Pertanyaan</b></td>
+                                        <td colspan="2"><b>Daftar Pertanyaan</b></td>
                                         <td><b>Tipe</b></td>
                                         <td><b><i>Id Resource</i></b></td>
                                         <td align="center"><b>Opsi</b></td>

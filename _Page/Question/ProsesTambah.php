@@ -113,7 +113,7 @@
             "required" => true,
             "extension" => [
                 [
-                    "url" => "http://rs-elsyifa.co.id/fhir/StructureDefinition/question-group",
+                    "url" => "http://rs-elsyifa.org/fhir/StructureDefinition/question-group",
                     "valueString" => $question_group
                 ]
             ]
@@ -127,7 +127,7 @@
             foreach ($alternatif_array as $alt) {
                 $answerOption[] = [
                     'valueCoding' => [
-                        'system'  => 'http://rs-elsyifa.co.id/codesystem/questionnaire',
+                        'system'  => 'http://rs-elsyifa.org/codesystem/questionnaire',
                         'code'    => $alt['code'],
                         'display' => $alt['display']
                     ]

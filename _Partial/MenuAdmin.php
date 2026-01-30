@@ -75,7 +75,7 @@
             </ul>
         </li>
         <li class="nav-heading border-1 border-top">
-            <div class="mt-3">Referensi</div>
+            <div class="mt-3">Master</div>
         </li>
         <li class="nav-item">
             <a class="nav-link <?php if($PageMenu=="Sediaan"||$PageMenu=="SatuanDosis"||$PageMenu=="SatuanNumerator"||$PageMenu=="SatuanDenominator"||$PageMenu=="Route"||$PageMenu=="Question"){echo "";}else{echo "collapsed";} ?>" data-bs-target="#components4-nav" data-bs-toggle="collapse" href="javascript:void(0);">
@@ -115,11 +115,7 @@
                 </li>
             </ul>
         </li>
-        
-        <li class="nav-heading border-1 border-top">
-            <div class="mt-3">Master</div>
-        </li>
-         <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link <?php if($PageMenu=="Medication"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=Medication">
                 <i class="bi bi-clipboard"></i> <span>Index Obat & Alkes</span>
             </a>
@@ -131,7 +127,7 @@
         </li>
         <li class="nav-item">
             <a class="nav-link <?php if($PageMenu=="MedicationDispense"){echo "";}else{echo "collapsed";} ?>" href="index.php?Page=MedicationDispense">
-                <i class="bi bi-clipboard"></i> <span>Penyerahan Obat</span>
+                <i class="bi bi-basket"></i> <span>Penyerahan</span>
             </a>
         </li>
         <li class="nav-heading border-1 border-top">
