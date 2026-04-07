@@ -206,6 +206,76 @@ $(document).ready(function() {
         });
     });
 
+    /* MODAL RESET TOKEN */
+    $(document).on('click', '.modal_reset_token', function () {
+
+        //tangkap data 'id_connection_simrs' dan buat variabel
+        var id_connection_simrs   = $(this).data('id');
+
+        //tampilkan modal
+        $('#ModalResetToken').modal('show');
+
+        // Kosongkan Notifikasi
+        $('#NotifikasiResetToken').html('');
+
+        //Form Loading
+        $('#FormResetToken').html('Loading...');
+
+        //Tampilkan Form Dengan Ajax
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/SettingSimrs/FormResetToken.php',
+            data        : {id_connection_simrs: id_connection_simrs},
+            success     : function(data){
+                $('#FormResetToken').html(data);
+            }
+        });
+    });
+
+    /* Ketika 'ProsesResetToken' disubmit */
+    $('#ProsesResetToken').submit(function(){
+       
+        /* Menangkap data dari form  */
+        var ProsesResetToken=$('#ProsesResetToken').serialize();
+
+        /* Loading Notification */
+        $('#NotifikasiResetToken').html('loading..');
+
+        /* Kirim data dengan AJAX  */
+        $.ajax({
+            type    : 'POST',
+            url     : '_Page/SettingSimrs/ProsesResetToken.php',
+            dataType: 'json',
+            data    : ProsesResetToken,
+            success: function(response) {
+                var status  = response.status;
+                var message = response.message;
+
+                // Apabila berhasil
+                if(status=='success'){
+                    //Bersihkan notifikasi
+                    $('#NotifikasiResetToken').html('');
+
+                    //Tutup modal
+                    $('#ModalResetToken').modal('hide');
+
+                    //reload tabel
+                    ShowConnectionTable();
+
+                    // Menampilkan Swal
+                    Swal.fire(
+                        'Success!',
+                        'Reset Token Koneksi SIMRS Berhasil!',
+                        'success'
+                    )
+                }else{
+                    $('#NotifikasiResetToken').html('<div class="alert alert-danger"><small>'+message+'</small></div>');
+                }
+                
+            }
+        });
+    });
+
     /* MODAL DELETE */
     $(document).on('click', '.modal_delete', function () {
 

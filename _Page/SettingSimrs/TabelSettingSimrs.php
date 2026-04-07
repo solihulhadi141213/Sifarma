@@ -99,6 +99,11 @@
                             </a>
                         </li>
                         <li>
+                            <a class="dropdown-item modal_reset_token" href="javascript:void(0)" data-id="'.$id_connection_simrs .'">
+                                <i class="bi bi-repeat"></i> Reset Token
+                            </a>
+                        </li>
+                        <li>
                             <a class="dropdown-item modal_delete" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#ModalHapus" data-id="'.$id_connection_simrs .'">
                                 <i class="bi bi-x"></i> Hapus Koneksi
                             </a>

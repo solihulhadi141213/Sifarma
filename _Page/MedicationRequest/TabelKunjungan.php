@@ -92,14 +92,12 @@
     // ===============================
     $data = json_decode($response, true);
 
-    if (
-        empty($data['response']['code']) ||
-        $data['response']['code'] != 200
-    ) {
+    if (empty($data['response']['code']) || $data['response']['code'] != 200) {
         echo '
             <tr>
                 <td colspan="10" class="text-center">
-                    <small class="text-danger">Gagal memuat data kunjungan</small>
+                    <small class="text-danger">Gagal memuat data kunjungan : URL '.$url_connection_simrs.'</small><br>
+                    <pre>'.$response.'</pre>
                 </td>
             </tr>
         ';
