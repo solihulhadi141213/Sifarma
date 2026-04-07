@@ -170,7 +170,11 @@
                         <div class="row mb-2">
                             <div class="col-4"><small><i>ID Encounter</i></small></div>
                             <div class="col-1"><small>:</small></div>
-                            <div class="col-7"><small class="text text-grayish">'.$id_encounter.'</small></div>
+                            <div class="col-7">
+                                <a href="javascript:void(0);" class="modal_detail_encounter" data-id="'.$id_encounter.'">
+                                    <small class="text text-primary">'.$id_encounter.' <i class="bi bi-arrow-up-right-square"></i></small>
+                                </a>
+                            </div>
                         </div>
                         <div class="row mb-2">
                             <div class="col-4"><small>Tanggal/Jam Resep</small></div>
@@ -274,6 +278,16 @@
                 ?>
             </div>
         </div>
+        <div class="card">
+            <div class="card-header">
+                <b class="card-title">Allergy Intolerance</b>
+            </div>
+            <div class="card-body">
+                <small>
+                    Berikut ini adalah pernyataan dokter tentang Allergy Intolerance
+                </small>
+            </div>
+        </div>
     </div>
 
     <!-- KOLOM KE 2 -->
@@ -291,7 +305,7 @@
             <div class="card-body">
                 <div class="row mb-3">
                     <div class="col-12 mb-3">
-                        <button type="button" class="btn btn-md btn-outline-secondary btn-rounded btn-block" data-bs-toggle="dropdown" aria-expanded="false">
+                        <button type="button" class="btn btn-md btn-primary btn-rounded btn-block" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-plus"></i> Tambah Item
                         </button>
                         <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow bg-body-secondary shadow-2-strong" style="">
@@ -459,6 +473,13 @@
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col-4"><small><i>Medication Dispense</i></small></div>
+                                    <div class="col-1"><small>:</small></div>
+                                    <div class="col-7">
+                                        '.$label_medication_dispense.'
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4"><small><i>Allergy - Intolerance</i></small></div>
                                     <div class="col-1"><small>:</small></div>
                                     <div class="col-7">
                                         '.$label_medication_dispense.'

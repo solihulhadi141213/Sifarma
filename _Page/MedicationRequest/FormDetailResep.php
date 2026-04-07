@@ -74,7 +74,7 @@
     $reason_code          = tampil($Data['reason_code'] ?? null);
     $reason_display       = tampil($Data['reason_display'] ?? null);
     $reason_system        = tampil($Data['reason_system'] ?? null);
-    $apoteker             = tampil($Data['apoteker'] ?? null);
+    $apoteker             = tampil($Data['apoteker_nama'] ?? null);
     $sumber_data          = tampil($Data['sumber_data'] ?? null);
     $status_resep         = tampil($Data['status_resep'] ?? null);
 

@@ -1386,6 +1386,32 @@ $(document).ready(function() {
     });
 
     // ==========================================================
+    // MODAL DETAIL ENCOUNTER
+    // ==========================================================
+    $(document).on('click', '.modal_detail_encounter', function () {
+
+        // Tangkap 'id_encounter'
+        var id_encounter = $(this).data('id');
+
+        // Tampilkan modal 'ModalKirimMedicationRequest'
+        $('#ModalDetailEncounter').modal('show');
+
+        // Loading Form
+        $('#FormDetailEncounter').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/MedicationRequest/FormDetailEncounter.php',
+            data        : {id_encounter: id_encounter},
+            success     : function(data){
+                $('#FormDetailEncounter').html(data);
+            }
+        });
+
+    });
+
+    // ==========================================================
     // MODAL TAMBAH MEDICATION REQUEST
     // ==========================================================
     $(document).on('click', '.modal_tambah_medication_request', function () {
