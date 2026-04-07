@@ -249,6 +249,63 @@
         </div>
     </div>
 </div>
+<!-- MODAL DETAIL KUNJUNGAN -->
+<div class="modal fade" id="ModalDetailKunjungan" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-dark"><i class="bi bi-info-circle"></i> Detail Kunjungan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12" id="FormDetailKunjungan">
+                        <!-- Form Proses -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                    <i class="bi bi-x"></i> Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL UPDATE KUNJUNGAN -->
+<div class="modal fade" id="ModalUpdateKunjungan" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <form action="javascript:void(0);" id="ProsesUpdateKunjungan">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark"><i class="bi bi-arrow-left-right"></i> Update Kunjungan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12" id="FormUpdateKunjungan">
+                            <!-- Form Proses -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" id="NotifikasiUpdateKunjungan">
+                            <!-- Form Proses -->
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-rounded" id="button_update_kunjungan">
+                        <i class="bi bi-save"></i> Update
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-rounded" data-bs-dismiss="modal">
+                        <i class="bi bi-x"></i> Tutup
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 <!-- MODAL EDIT RESEP -->
 <div class="modal fade" id="ModalEditResep" tabindex="-1">

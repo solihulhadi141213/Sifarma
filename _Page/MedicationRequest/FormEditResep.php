@@ -172,7 +172,7 @@
                 <label for="id_encounter_edit"><small>ID Encounter</small></label>
             </div>
             <div class="col-md-8">
-                <input type="text" readonly name="id_encounter" id="id_encounter_edit" class="form-control" value="'.$id_encounter.'">
+                <input type="text" name="id_encounter" id="id_encounter_edit" class="form-control" value="'.$id_encounter.'">
             </div>
         </div>
         <div class="row mb-3">

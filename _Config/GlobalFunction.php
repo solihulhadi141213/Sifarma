@@ -900,6 +900,49 @@
         return '-';
     }
 
+    function hitungUsiaPasien($tanggal_lahir, $tanggal_pemeriksaan = null) {
+        if (empty($tanggal_lahir)) {
+            return '-';
+        }
+
+        // Jika tanggal pemeriksaan kosong, gunakan waktu sekarang
+        $tanggal_pemeriksaan = $tanggal_pemeriksaan ?? date('Y-m-d H:i:s');
+
+        $lahir = new DateTime($tanggal_lahir);
+        $periksa = new DateTime($tanggal_pemeriksaan);
+
+        // Hitung selisih
+        $selisih = $lahir->diff($periksa);
+
+        // Total hari
+        $total_hari = $selisih->days;
+
+        // Jika kurang dari 1 hari → 1 hari
+        if ($total_hari < 1) {
+            return '1 Hari';
+        }
+
+        // Jika kurang dari 1 bulan
+        if ($selisih->y == 0 && $selisih->m == 0) {
+            return $total_hari . ' Hari';
+        }
+
+        // Jika kurang dari 1 tahun
+        if ($selisih->y == 0) {
+            $total_bulan = $selisih->m;
+
+            // Tambahkan 1 bulan jika ada sisa hari
+            if ($selisih->d > 0) {
+                $total_bulan += 1;
+            }
+
+            return $total_bulan . ' Bulan';
+        }
+
+        // Jika 1 tahun atau lebih
+        return $selisih->y . ' Tahun';
+    }
+
     // =========================================
     // Fungsi Untuk Generate Token Satu Sehat
     // =========================================

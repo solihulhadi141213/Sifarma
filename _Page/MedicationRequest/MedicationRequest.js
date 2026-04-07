@@ -1272,6 +1272,120 @@ $(document).ready(function() {
     });
 
     // ==========================================================
+    // MODAL DETAIL KUNJUNGAN
+    // ==========================================================
+    $(document).on('click', '.modal_detail_kunjungan', function () {
+
+        // Tangkap 'id_kunjungan'
+        var id_kunjungan = $(this).data('id');
+
+        // Tampilkan modal 'ModalKirimMedicationRequest'
+        $('#ModalDetailKunjungan').modal('show');
+
+        // Loading Form
+        $('#FormDetailKunjungan').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/MedicationRequest/FormDetailKunjungan.php',
+            data        : {id_kunjungan: id_kunjungan},
+            success     : function(data){
+                $('#FormDetailKunjungan').html(data);
+                // 🔁 Re-inisialisasi tooltip setelah data dimuat
+                $('[data-bs-toggle="tooltip"]').tooltip();
+            }
+        });
+
+    });
+
+    // ==========================================================
+    // MODAL UPDATE KUNJUNGAN
+    // ==========================================================
+    $(document).on('click', '.modal_update_kunjungan', function () {
+
+        // Tangkap 'id_medication_request_group'
+        var id_medication_request_group = $(this).data('id');
+
+        // Tampilkan modal 'ModalKirimMedicationRequest'
+        $('#ModalUpdateKunjungan').modal('show');
+
+        // Kosongkan Notifikasi
+        $('#NotifikasiUpdateKunjungan').html('');
+
+        // Loading Form
+        $('#FormUpdateKunjungan').html('Loading...');
+
+        // Tampilkan Form Dengan AJAX
+        $.ajax({
+            type 	    : 'POST',
+            url 	    : '_Page/MedicationRequest/FormUpdateKunjungan.php',
+            data        : {id_medication_request_group: id_medication_request_group},
+            success     : function(data){
+                $('#FormUpdateKunjungan').html(data);
+            }
+        });
+
+    });
+
+    // Submit 'ProsesUpdateKunjungan'
+    $('#ProsesUpdateKunjungan').submit(function(e){
+        e.preventDefault(); // WAJIB agar tidak submit normal
+
+        var ProsesUpdateKunjungan = $('#ProsesUpdateKunjungan').serialize();
+
+        $.ajax({
+            type    : 'POST',
+            url     : '_Page/MedicationRequest/ProsesUpdateKunjungan.php',
+            dataType: 'json',
+            data    : ProsesUpdateKunjungan,
+
+            // 🔒 KUNCI TOMBOL SAAT REQUEST DIMULAI
+            beforeSend: function(){
+                $('#NotifikasiUpdateKunjungan').html('Mengirim data...');
+            },
+
+            // ✅ RESPONSE BERHASIL DITERIMA (HTTP 200)
+            success: function(response){
+                var status                      = response.status;
+                var message                     = response.message;
+
+                if(status === 'success'){
+                   
+                    // Tutup Modal
+                    $('#NotifikasiUpdateKunjungan').html('');
+                    $('#ModalUpdateKunjungan').modal('hide');
+
+                    // Tampilkan Data
+                    ShowDetailResep();
+
+                    // Toast Proses Berhasil
+                    $('#put_message').html('<i class="bi bi-check-circle me-2"></i> ' + message);
+
+                    // Tampilkan Toast
+                    var toastEl = document.getElementById('toast_proses');
+                    var toast   = new bootstrap.Toast(toastEl, {delay: 3000});
+                    toast.show();
+
+                }else{
+                    $('#NotifikasiUpdateKunjungan').html(
+                        '<div class="alert alert-danger"><small>'+message+'</small></div>'
+                    );
+                }
+            },
+
+            // ❌ ERROR TEKNIS (NETWORK / 500 / TIMEOUT)
+            error: function(xhr){
+                $('#NotifikasiUpdateKunjungan').html(
+                    '<div class="alert alert-danger">' +
+                    '<small>Koneksi ke Server Gagal</small>' +
+                    '</div>'
+                );
+            },
+        });
+    });
+
+    // ==========================================================
     // MODAL TAMBAH MEDICATION REQUEST
     // ==========================================================
     $(document).on('click', '.modal_tambah_medication_request', function () {
